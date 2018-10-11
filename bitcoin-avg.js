@@ -10,7 +10,6 @@ function buildXSig(timestamp) {
 }
 
 function getResponse(queryURL, cb) {
-    const response;
     $.ajax({
         url: 'https://apiv2.bitcoinaverage.com/constants/time',
         method: 'GET'
