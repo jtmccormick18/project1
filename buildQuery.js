@@ -8,6 +8,6 @@ timeRange = 'monthly';
 
 const queryURL = `https://apiv2.bitcoinaverage.com/indices/global/history/${crypto}${currency}?period=${timeRange}&format=json`
 
-getResponse(queryURL, function (response) {
+getChartData(queryURL, function (response) {
     console.log(response);
 })
