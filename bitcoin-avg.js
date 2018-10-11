@@ -9,7 +9,7 @@ function buildXSig(timestamp) {
     return `${payload}.${digestValue}`;
 }
 
-window.getChartData = function(queryURL, cb) {
+window.callBitcoinAvgAPI = function(queryURL, cb) {
     $.ajax({
         url: 'https://apiv2.bitcoinaverage.com/constants/time',
         method: 'GET'
