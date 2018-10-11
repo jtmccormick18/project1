@@ -10,5 +10,4 @@ const getBit=function(){
         method: 'GET'
     }).then(function(response){
 
-    }
 }
