@@ -1,8 +1,10 @@
 const HMAC_SHA256 = require('crypto-js/hmac-sha256');
-
+let crypto=$('#cryptoInput').val();
+let currency=$('#currencyInput').val();
+let timeRange=$('#timeInput').val();
 let publicKey = 'OWE2NmUyZDk5MDllNGUwYWJkZWJiYTlhYWQ1ZDVjZjc'
 let secretKey = 'MmQ3NzMzZDQzNDIxNDIyZjk5MWFhMmU0MjQ4MzVmMTM0NjgyZTNmMzcwMGE0YzZhYmNmOWM1NWU3MDYyNGI1ZQ'
-const queryURL = `https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=2`
+const queryURL = `https://apiv2.bitcoinaverage.com/indices/global/history/${crypto}${currency}?period=${timeRange}&format=json`
 
 function buildXSig(timestamp) {
     const payload = `${timestamp}.${publicKey}`;
@@ -26,16 +28,3 @@ $.ajax({
     });
 });
 
-// const startReq = new XMLHttpRequest();
-// startReq.open('GET', 'https://apiv2.bitcoinaverage.com/constants/time');
-// startReq.onload = function() {
-//     const xhr = new XMLHttpRequest();
-//     const timestamp = JSON.parse(startReq.response).epoch;
-//     xhr.open('GET', queryURL);
-//     xhr.setRequestHeader('X-signature', buildXSig(timestamp));
-//     xhr.onload = function() {
-//         console.log(JSON.parse(xhr.response));
-//     }
-//     xhr.send();
-// }
-// startReq.send();
