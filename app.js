@@ -1,45 +1,3 @@
-// const currencies = [];
-
-// const getCurrencies = function () {
-//     let currencyUrl = "https://api.nexchange.io/en/api/v1/currency";
-
-//     const getCoin1 = $('depositCoin').val();
-//     const getCoin2 = $('recieveCoin').val();
-//     const parameters = {
-//         'code': getCoin
-
-//     };
-   
-//     currencyUrl += '?' + $.param(parameters);
-
-//     return currencyUrl;
-
-// };
-
-
-
-// const getCurrencies = function () {
-//     const queryURL = `https://api.nexchange.io/en/api/v1/currency`;
-
-//     $.ajax({
-//         url: queryURL,
-//         method: 'GET'
-//     }).then(function(response) {
-//         console.log(response);
-//         const currencyName = response.code;
-//         for (let i = 0; i < currencyName.length; i++) {
-//             console.log(currencyName);
-//             $('.depositCoin').append(`<option>${currencies[i]}<option>`);
-//         }
-        
-//     });
-
-// };
-
-// $.get("https://api.nexchange.io/en/api/v1/currency/", function(data){
-//   console.log(data);
-// });
-
 const getPrice = function() {
 
     let priceUrl = "https://api.nexchange.io/en/api/v1/get_price/pair_name/?amount_base=1.24354147&amount_quote=100";
@@ -103,58 +61,64 @@ function cbPairs(data){
 //post
 
 const createOrder = function(e){
-    (e).prevent.default();
+    // (e).prevent.default();
 
-    const payload = $(this).attr("data-name");
+    // const payload = $(this).attr("data-name");
     const orderURL = `https://api.nexchange.io/en/api/v1/orders/`
 
-    const askingFee = $("").val();
-    const biddingFee = $("").val();
-    const coinName = $("").val();
-    const coinSymbol = $("").val();
-    const type = $("").val();
-    const coinAddy = $("").val();
-    const currencyCode = $("").val();
+    let askingFee;
+    let biddingFee;
+    let coinName;
+    let baseCode;
+    let quoteCode;
+    let type;
+    let coinAddy;
+    let currencyCode;
+
+    coinName = 'ETHUSD';
+    baseCode = 'ETH';
+    quoteCode = 'USD';
+    type = 'W';
+    coinAddy = '';
 
 
     $.ajax({
         url: orderURL,
         method: "POST",
         "payload": {
-            "amount_base": recieveAmount,
-            "amount_quote": sendAmount,
+            // "amount_base": recieveAmount,
+            // "amount_quote": sendAmount,
             "is_default_rule": true,
             "pair": {
                 "name": coinName,
                 "base": {
-                    "code": coinSymbol,
+                    "code": baseCode,
                 },
                 "quote": {
-                    "code": coinSymbol, 
+                    "code": quoteCode, 
                 },
                 "fee_ask": {
-                    "fee_ask": askingFee
+                    "fee_ask": .001,
                 },
                 "fee_bid": {
-                    "fee_bid": biddingFee
+                    "fee_bid": .001
                 }
             },
             "withdraw_address": {
                 "type": type,
                 "address": coinAddy,
-                "currency_code": ""
+                "currency_code": 'ETH'
             },
         },
         "headers": {
-            "Content-Type": "app.json",
-            "x-refferal-token": ""
+            "Content-Type": "application/json",
+            "x-referral-token": null
         }
     }).then(function(response) { 
-
+        console.log(response);
     });
-
-
 }
+createOrder();
 
 // $( "#searchForm" ).submit(function(e) {
 //     event.preventDefault();
