@@ -1,10 +1,7 @@
 const HMAC_SHA256 = require('crypto-js/hmac-sha256');
-let crypto=$('#cryptoInput').val();
-let currency=$('#currencyInput').val();
-let timeRange=$('#timeInput').val();
-let publicKey = 'OWE2NmUyZDk5MDllNGUwYWJkZWJiYTlhYWQ1ZDVjZjc'
-let secretKey = 'MmQ3NzMzZDQzNDIxNDIyZjk5MWFhMmU0MjQ4MzVmMTM0NjgyZTNmMzcwMGE0YzZhYmNmOWM1NWU3MDYyNGI1ZQ'
-const queryURL = `https://apiv2.bitcoinaverage.com/indices/global/history/${crypto}${currency}?period=${timeRange}&format=json`
+
+const publicKey = 'OWE2NmUyZDk5MDllNGUwYWJkZWJiYTlhYWQ1ZDVjZjc'
+const secretKey = 'MmQ3NzMzZDQzNDIxNDIyZjk5MWFhMmU0MjQ4MzVmMTM0NjgyZTNmMzcwMGE0YzZhYmNmOWM1NWU3MDYyNGI1ZQ'
 
 function buildXSig(timestamp) {
     const payload = `${timestamp}.${publicKey}`;
@@ -12,19 +9,20 @@ function buildXSig(timestamp) {
     return `${payload}.${digestValue}`;
 }
 
-$.ajax({
-    url: 'https://apiv2.bitcoinaverage.com/constants/time',
-    method: 'GET'
-}).then(function(timestamp) {
-    timestamp = timestamp.epoch;
+window.getChartData = function(queryURL, cb) {
     $.ajax({
-        url: queryURL,
-        method: 'GET',
-        headers: {
-            'X-signature': buildXSig(timestamp)
-        }
-    }).then(function(response) {
-        console.log(response);
+        url: 'https://apiv2.bitcoinaverage.com/constants/time',
+        method: 'GET'
+    }).then(function(timestamp) {
+        timestamp = timestamp.epoch;
+        $.ajax({
+            url: queryURL,
+            method: 'GET',
+            headers: {
+                'X-signature': buildXSig(timestamp)
+            }
+        }).then(function(data) {
+            cb(data);
+        });
     });
-});
-
+}

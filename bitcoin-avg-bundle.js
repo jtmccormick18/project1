@@ -1,10 +1,8 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const HMAC_SHA256 = require('crypto-js/hmac-sha256');
-let crypto=$('#crpytoInput').val();
-let currency=$('#currencyInput').val();
-let publicKey = 'OWE2NmUyZDk5MDllNGUwYWJkZWJiYTlhYWQ1ZDVjZjc'
-let secretKey = 'MmQ3NzMzZDQzNDIxNDIyZjk5MWFhMmU0MjQ4MzVmMTM0NjgyZTNmMzcwMGE0YzZhYmNmOWM1NWU3MDYyNGI1ZQ'
-const queryURL = `https://apiv2.bitcoinaverage.com/convert/global?from=${crypto}&to=${currency}&amount=2`
+
+const publicKey = 'OWE2NmUyZDk5MDllNGUwYWJkZWJiYTlhYWQ1ZDVjZjc'
+const secretKey = 'MmQ3NzMzZDQzNDIxNDIyZjk5MWFhMmU0MjQ4MzVmMTM0NjgyZTNmMzcwMGE0YzZhYmNmOWM1NWU3MDYyNGI1ZQ'
 
 function buildXSig(timestamp) {
     const payload = `${timestamp}.${publicKey}`;
@@ -12,22 +10,23 @@ function buildXSig(timestamp) {
     return `${payload}.${digestValue}`;
 }
 
-$.ajax({
-    url: 'https://apiv2.bitcoinaverage.com/constants/time',
-    method: 'GET'
-}).then(function(timestamp) {
-    timestamp = timestamp.epoch;
+window.getChartData = function(queryURL, cb) {
     $.ajax({
-        url: queryURL,
-        method: 'GET',
-        headers: {
-            'X-signature': buildXSig(timestamp)
-        }
-    }).then(function(response) {
-        console.log(response);
+        url: 'https://apiv2.bitcoinaverage.com/constants/time',
+        method: 'GET'
+    }).then(function(timestamp) {
+        timestamp = timestamp.epoch;
+        $.ajax({
+            url: queryURL,
+            method: 'GET',
+            headers: {
+                'X-signature': buildXSig(timestamp)
+            }
+        }).then(function(data) {
+            cb(data);
+        });
     });
-});
-
+}
 
 },{"crypto-js/hmac-sha256":3}],2:[function(require,module,exports){
 ;(function (root, factory) {
