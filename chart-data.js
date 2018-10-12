@@ -38,7 +38,9 @@ function updateChart() {
         console.log('Old latest timestamp: ' + myChart.data.labels[myChart.data.labels.length - 1]);
         myChart.data.labels = chartData.times;
         myChart.data.datasets[0].data = chartData.averages;
-        myChart.options.title.text = base + quote + ' - ' + period;
+        let periodDisplay = (period === 'alltime') ?
+            (period.substring(0, 3) + ' ' + period.substring(3)) : period;
+        myChart.options.title.text = base + quote + ' - ' + periodDisplay.toUpperCase();
         myChart.update();
         console.log('New latest timestamp: ' + myChart.data.labels[myChart.data.labels.length - 1]);
     });
