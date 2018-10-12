@@ -2,12 +2,28 @@ function handleError(jqXHR) {
     console.log(jqXHR.resposneText);
 }
 
+const currencies = []
+
 $.ajax({
     type: "GET",
     url: "https://api.nexchange.io/en/api/v1/currency/",
-    success: cbCurrency,
-    error: handleError
+}).then(function(response){
+    for(let i = 0; i < response.length; i++){
+        console.log(response[i].code);
+        currencies.push(response[i].code)
+    }
+    console.log(currencies);
+    renderCurrencies();
 });
+
+const renderCurrencies = function (){
+    $(".dropdown").empty();
+    for(let i = 0; i < currencies.length; i++){
+        const currencyBtn = $("<option>");
+        currencyBtn.text(currencies[i]);
+        $(".dropdown").append(currencyBtn);
+    }
+}
 
 function cbCurrency(data){
     console.log(data);
