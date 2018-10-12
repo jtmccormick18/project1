@@ -1,0 +1,23 @@
+{
+    "is_default_rule": true,
+    "pair": {
+        "name": coinName,
+        "base": {
+            "code": baseCode,
+        },
+        "quote": {
+            "code": quoteCode, 
+        },
+        "fee_ask": {
+            "fee_ask": .001,
+        },
+        "fee_bid": {
+            "fee_bid": .001
+        }
+    },
+    "withdraw_address": {
+        "type": type,
+        "address": coinAddy,
+        "currency_code": 'ETH'
+    },
+}

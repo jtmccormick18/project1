@@ -29,8 +29,8 @@ const getPrice = function() {
 
 };
 
-function handleError(jqXHR, textStatus, error) {
-    console.log(error);
+function handleError(jqXHR) {
+    console.log(jqXHR.resposneText);
 }
 
 $.ajax({
@@ -79,41 +79,46 @@ const createOrder = function(e){
     baseCode = 'ETH';
     quoteCode = 'USD';
     type = 'W';
-    coinAddy = '';
+    coinAddy = '0xfCc2FeedEd9d3503217B9c0e1ce987B4B84DB2b5';
+
+    const payload = {
+        "amount_base": 1,
+        "is_default_rule": true,
+        "pair": {
+            "name": coinName,
+            "base": {
+                "code": baseCode,
+            },
+            "quote": {
+                "code": quoteCode, 
+            },
+            "fee_ask": {
+                "fee_ask": .001,
+            },
+            "fee_bid": {
+                "fee_bid": .001
+            }
+        },
+        "withdraw_address": {
+            "type": type,
+            "address": coinAddy,
+            "currency_code": 'ETH'
+        },
+    };
 
 
     $.ajax({
+        error: function(jqXHR) {
+            console.log(jqXHR.responseText);
+        },
         url: orderURL,
         method: "POST",
-        "payload": {
-            // "amount_base": recieveAmount,
-            // "amount_quote": sendAmount,
-            "is_default_rule": true,
-            "pair": {
-                "name": coinName,
-                "base": {
-                    "code": baseCode,
-                },
-                "quote": {
-                    "code": quoteCode, 
-                },
-                "fee_ask": {
-                    "fee_ask": .001,
-                },
-                "fee_bid": {
-                    "fee_bid": .001
-                }
-            },
-            "withdraw_address": {
-                "type": type,
-                "address": coinAddy,
-                "currency_code": 'ETH'
-            },
-        },
-        "headers": {
+        data: JSON.stringify(payload),
+        headers: {
             "Content-Type": "application/json",
             "x-referral-token": null
-        }
+        },
+        // contentType: 'application/json'
     }).then(function(response) { 
         console.log(response);
     });
@@ -137,3 +142,6 @@ createOrder();
 //       $( "#result" ).empty().append( content );
 //     });
 //   });
+
+
+//create a function that takes in
