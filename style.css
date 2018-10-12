@@ -47,15 +47,22 @@ main {
     padding: 20px;
 
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exchangeVals {
+    display: flex;
     justify-content: center;
 }
 
-.deposit, .receive {
+form {
     display: flex;
     margin: 20px;
 }
 
-.title{
+.dropdown, .title {
     background-color: rgb(151, 0, 226);;
     border: 2px solid;
     border-color: cyan;
@@ -66,6 +73,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dropdown:focus {
+    outline: none;
 }
 
 input{

@@ -29,14 +29,23 @@
             <h1>Chart</h1>
         </div>
         <section class="container" id="purchaseWindow">
-            <form class="deposit">
-                <p class="title">Deposit</p>
-                <input class="firstCurrency" type="number" placeholder="Amount">
-            </form>
-
-            <form class="receive">
-                <p class="title">Receive</p>
-                <input class="secondCurrency" type="number" placeholder="Amount">
+            <div class="exchangeVals">
+                <form class="deposit">
+                    <select class="dropdown">
+                        <option value="USD">USD</option>
+                    </select>
+                    <input class="firstCurrency" placeholder="Amount">
+                </form>
+                <form class="receive">
+                    <select class="dropdown">
+                        <option value="ETH">ETH</option>
+                    </select>
+                    <input class="secondCurrency" placeholder="Amount">
+                </form>
+            </div>
+            <form class="wallet">
+                <p class="title">Wallet Address</p>
+                <input class="address" type="number" placeholder="Amount">
             </form>
         </section>
     </main>
