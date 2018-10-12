@@ -38,16 +38,16 @@ function updateChart() {
         console.log('Old latest timestamp: ' + myChart.data.labels[myChart.data.labels.length - 1]);
         myChart.data.labels = chartData.times;
         myChart.data.datasets[0].data = chartData.averages;
-        myChart.options.title.text = base + quote;
+        myChart.options.title.text = base + quote + ' - ' + period;
         myChart.update();
         console.log('New latest timestamp: ' + myChart.data.labels[myChart.data.labels.length - 1]);
     });
 }
 
 let autoUpdater;
-function startAutoUpdater(time) {
+function startAutoUpdater(seconds) {
     clearInterval(autoUpdater);
-    autoUpdater = setInterval(updateChart, time);
+    autoUpdater = setInterval(updateChart, seconds * 1000);
 }
 function stopAutoUpdater() {
     clearInterval(autoUpdater);

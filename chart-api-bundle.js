@@ -1,34 +1,31 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const HMAC_SHA256 = require('crypto-js/hmac-sha256');
+const hmac_sha256 = require('crypto-js/hmac-sha256');
+const enc_hex = require('crypto-js/enc-hex');
 
-const publicKey = 'OWE2NmUyZDk5MDllNGUwYWJkZWJiYTlhYWQ1ZDVjZjc'
-const secretKey = 'MmQ3NzMzZDQzNDIxNDIyZjk5MWFhMmU0MjQ4MzVmMTM0NjgyZTNmMzcwMGE0YzZhYmNmOWM1NWU3MDYyNGI1ZQ'
+const publicKey = 'NjdiM2JlNGE2ZWI1NGJmNDhlZDI5YzM2MjBhMmI1ODg'
+const secretKey = 'NTQzYmFhZTA3MWNmNGY4Yzk0NWE2NTFkNDlhZGE1ZmJmYTYzNDY4NTRiYmE0ZWU5OTdmMzlmMjEzZDlmNTg1Zg'
 
 function buildXSig(timestamp) {
+    timestamp = Math.round(timestamp / 1000)
     const payload = `${timestamp}.${publicKey}`;
-    const digestValue = HMAC_SHA256(payload, secretKey);
+    const hash = hmac_sha256(payload, secretKey);
+    digestValue = enc_hex.stringify(hash);
     return `${payload}.${digestValue}`;
 }
 
 window.callBitcoinAvgAPI = function(queryURL, cb) {
     $.ajax({
-        url: 'https://apiv2.bitcoinaverage.com/constants/time',
-        method: 'GET'
-    }).then(function(timestamp) {
-        timestamp = timestamp.epoch;
-        $.ajax({
-            url: queryURL,
-            method: 'GET',
-            headers: {
-                'X-signature': buildXSig(timestamp)
-            }
-        }).then(function(data) {
-            cb(data);
-        });
+        url: queryURL,
+        method: 'GET',
+        headers: {
+            'X-signature': buildXSig(Date.now())
+        }
+    }).then(function(data) {
+        cb(data);
     });
 }
 
-},{"crypto-js/hmac-sha256":3}],2:[function(require,module,exports){
+},{"crypto-js/enc-hex":3,"crypto-js/hmac-sha256":4}],2:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -790,6 +787,25 @@ window.callBitcoinAvgAPI = function(queryURL, cb) {
 
 }));
 },{}],3:[function(require,module,exports){
+;(function (root, factory) {
+	if (typeof exports === "object") {
+		// CommonJS
+		module.exports = exports = factory(require("./core"));
+	}
+	else if (typeof define === "function" && define.amd) {
+		// AMD
+		define(["./core"], factory);
+	}
+	else {
+		// Global (browser)
+		factory(root.CryptoJS);
+	}
+}(this, function (CryptoJS) {
+
+	return CryptoJS.enc.Hex;
+
+}));
+},{"./core":2}],4:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -808,7 +824,7 @@ window.callBitcoinAvgAPI = function(queryURL, cb) {
 	return CryptoJS.HmacSHA256;
 
 }));
-},{"./core":2,"./hmac":4,"./sha256":5}],4:[function(require,module,exports){
+},{"./core":2,"./hmac":5,"./sha256":6}],5:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -952,7 +968,7 @@ window.callBitcoinAvgAPI = function(queryURL, cb) {
 
 
 }));
-},{"./core":2}],5:[function(require,module,exports){
+},{"./core":2}],6:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
