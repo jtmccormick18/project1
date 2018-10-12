@@ -7,24 +7,24 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #f3f3f3;
+    font-family: 'Cinzel', serif;
+    color: #303030;
 }
 
 h1 {
     font-size: 40px;
     padding: 30px;
-    color: #f3f3f3;
+    
 }
 
 header {
     width: 100%;
-    background-color: rgb(98, 66, 114);
+    background-color: rgb(151, 0, 226);
     text-align: center;
 }
 
 main {
-    color: white;
     flex: 1;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,11 +32,10 @@ main {
 
 .chart {
     width: 980px;
-    height: 450px;
     margin: 30px;
-    padding: 20px 0;
+    padding: 5px 0;
     background-color: #303030;
-    border: 15px solid rgb(98, 66, 114);
+    border: 15px solid rgb(151, 0, 226);
     
     display: flex;
     flex-direction: column;
@@ -44,13 +43,46 @@ main {
     align-items: center;
 }
 
-.exchange {
-    width: 800px;
-    height: 350px;
-    margin: 0 0 30px;
-    background-color: rgb(98, 66, 114);
+#purchaseWindow{
+    background-color: #303030;
+    border: 15px solid rgb(151, 0, 226);
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exchangeVals {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    margin: 20px;
+}
+
+.dropdown, .title {
+    background-color: rgb(151, 0, 226);;
+    border: 2px solid;
+    border-color: cyan;
+    border-radius: 25px 0px 0px 25px;
+    margin: 0px;
+    padding: 4px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dropdown:focus {
+    outline: none;
+}
+
+input{
+    border-radius: 0px 25px 25px 0px;
+    border-color: cyan;
+    padding: 4px;
 }
