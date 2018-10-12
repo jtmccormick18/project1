@@ -21,7 +21,7 @@ window.myChart = new Chart(ctx, {
         },
         title: {
             display: true,
-            fontColor: '#f0f0f0',
+            fontColor: 'blue',
             fontSize: 18,
         },
         layout: {
@@ -37,7 +37,7 @@ window.myChart = new Chart(ctx, {
                 },
                 ticks: {
                     display: true,
-                    fontColor: '#f0f0f0'
+                    fontColor: 'blue'
                 }
             }],
             xAxes: [{

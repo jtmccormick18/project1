@@ -5,20 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="reset.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
     <title>Crpty-Pro</title>
 </head>
 
 <body>
-    <header>
-        <h1>CryptPro</h1>
-    </header>
+    <div class="conatiner-fluid">
+        <header>
+            <div class="jumbotron jumbotron-fluid bg-dark">
+                <div class="container">
+                    <h1 class="display-4 text-white font-weight-bold text-center">CryptPRO</h1>
+                    <p class="lead text-primary text-center">Your one stop shop for all things crypto</p>
+                </div>
+            </div>
+        </header>
+    </div>
     <main>
-        <div class='chart'>
-            <canvas id="myChart"></canvas>
+        <div class="container">
+                <div class='chart'>
+                    <select id="currencyDrop">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                    </select>
+                    <select id="cryptoDrop">
+                        <option value="BTC">Bitcoin</option>
+                        <option value="BIX">BiBox Token</option>
+                        <option value="KCS">KuCoin Shares</option>
+                        <option value="KNC">Kybu Network</option>
+                        <option value="BNT">Bancor</option>
+                        <option value="HT">Huobi Token</option>
+                        <option value="OMG">Omise Geo</option>
+                        <option value="LOB">Lobinhood</option>
+                        <option value="ETH">Ethereum</option>
+                        <option value="BNB">Binance Coin</option>
+                        <option value="EOS">EOS</option>
+                        <option value="BCH">Bitcoin Cash</option>
+                        <option value="VUG">Verge</option>
+                        <option value="BDG">Bit Degree</option>
+                        <option value="LTC">Lite Coin</option>
+                        <option value="BMH">Block Mesh</option>
+                        <option value="Doge">Doge</option>
+                    </select>
+                    <button id="submit" type="button" class="btn btn-primary">Submit</button>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+                <div class='exchange'>
+                    <h1>Exchange</h1>
+                </div>
         </div>
-        <div class='exchange'><h1>Exchange</h1></div>
     </main>
 
 
