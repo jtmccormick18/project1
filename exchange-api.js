@@ -16,14 +16,6 @@ $.ajax({
     renderCurrencies();
 });
 
-const renderCurrencies = function (){
-    $(".dropdown").empty();
-    for(let i = 0; i < currencies.length; i++){
-        const currencyBtn = $("<option>");
-        currencyBtn.text(currencies[i]);
-        $(".dropdown").append(currencyBtn);
-    }
-}
 
 function cbCurrency(data){
     console.log(data);

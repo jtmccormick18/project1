@@ -14,4 +14,3 @@ const renderCurrencies = function (){
         $(".dropdown").append(currencyBtn);
     }
 }
-
