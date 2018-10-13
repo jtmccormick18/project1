@@ -32,15 +32,18 @@
             <div class="exchangeVals">
                 <form class="deposit">
                     <select class="dropdown">
-                        <option value="USD">USD</option>
+                        <option class="coin1" value="USD">USD</option>
                     </select>
                     <input class="firstCurrency" placeholder="Amount">
                 </form>
                 <form class="receive">
                     <select class="dropdown">
-                        <option value="ETH">ETH</option>
+                        <option class="coin2" value="ETH">ETH</option>
                     </select>
-                    <input class="secondCurrency" placeholder="Amount">
+                    <div class="secondCurrency">
+                        <!-- I removed the input box for the second currency(the baseAmount
+                            because the currency conversion cant be displayed in input box) -->
+                    </div>
                 </form>
             </div>
             <form class="wallet">

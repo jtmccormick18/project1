@@ -14,3 +14,18 @@ const renderCurrencies = function (){
         $(".dropdown").append(currencyBtn);
     }
 }
+
+//to see if a currency is a pair:
+
+// const pairCheck = function () {
+//     for(let i = 0; i < )
+// }
+
+
+//currency converter:
+
+// const currencyConverter = function (){
+//     const val1 = $(".coin1").val(),
+// }
+
+

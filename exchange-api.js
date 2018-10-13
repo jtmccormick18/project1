@@ -1,3 +1,32 @@
+const getPrice = function () {
+    const priceUrl = "https://api.nexchange.io/en/api/v1/get_price/pair_name/?amount_base=1.24354147&amount_quote=100";
+    const paramters = {
+        "pair_name": pairName,
+        "amount_base": baseAmount,
+        "amount_quote": quoteAmount,
+        };
+
+        //quoteAmount is the amount sent
+        //baseAmount is amount of currency you recieve in exchange for the amountQuote
+
+        const pairName = $(".firstCurrency").val();
+        if (pairName) {
+            paramters.pair_name = pairName;
+        }
+        const baseAmount = $(".firstCurrency").val();
+        if (baseAmount) {
+            paramters.amount_base = baseAmount;
+        }
+        const quoteAmount = $(".firstCurrency").val();
+        if (pairName) {
+            paramters.amount_quote = quoteAmount;
+        }
+
+        priceUrl += '?' + $.param(paramters);
+
+        console.log(priceUrl);
+}
+
 function handleError(jqXHR) {
     console.log(jqXHR.resposneText);
 }
@@ -17,14 +46,24 @@ $.ajax({
 });
 
 
+const baseCoin = $(".coin1").val();
+const quoteCoin = $(".coin2").val();
+
 function cbCurrency(data){
     console.log(data);
 
     $.ajax({
         type: "GET",
         url: "https://api.nexchange.io/en/api/v1/pair/",
-        success: cbPairs,
-        error: handleError
+    }).then(function(response){
+        for(let i = 0; i < response.length; i++){
+            console.log(response[i].name);
+            if(response[i].base != response[i].quote){
+                console.log(true);
+            } else {
+                console.log(false);
+            }
+        }
     });
 }
 
