@@ -25,7 +25,13 @@ const renderCurrencies = function (){
 //currency converter:
 
 // const currencyConverter = function (){
-//     const val1 = $(".coin1").val(),
+//     var data = JSON.stringify(jqXHR.responseText)
+//     let quoteAmount = baseAmount /data.fiat
+    
 // }
 
+// const orderSubmit = function () {
+//     if(response[i].code)
+// }
 
+// $(".submit").on("click", orderSubmit);

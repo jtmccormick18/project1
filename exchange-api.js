@@ -9,7 +9,7 @@ const getPrice = function () {
         //quoteAmount is the amount sent
         //baseAmount is amount of currency you recieve in exchange for the amountQuote
 
-        const pairName = $(".firstCurrency").val();
+        const pairName = $("").val();
         if (pairName) {
             paramters.pair_name = pairName;
         }
@@ -17,7 +17,7 @@ const getPrice = function () {
         if (baseAmount) {
             paramters.amount_base = baseAmount;
         }
-        const quoteAmount = $(".firstCurrency").val();
+        const quoteAmount = $("").val();
         if (pairName) {
             paramters.amount_quote = quoteAmount;
         }
@@ -31,7 +31,7 @@ function handleError(jqXHR) {
     console.log(jqXHR.resposneText);
 }
 
-const currencies = []
+const currencies = [];
 
 $.ajax({
     type: "GET",
@@ -84,11 +84,28 @@ const createOrder = function() {
     let coinAddy;
     let currencyCode;
 
-    coinName = 'ETHUSD';
-    baseCode = 'ETH';
-    quoteCode = 'USD';
+    // coinName = 'ETHUSD';
+    // baseCode = 'ETH';
+    // quoteCode = 'USD';
     type = 'W';
     coinAddy = '0xfCc2FeedEd9d3503217B9c0e1ce987B4B84DB2b5';
+
+    const getSelectedValue1 = function () {
+        const selectedValue = $(".dropdown").val();
+        console.log(selectedValue);
+    }
+    $(".dropdown").on("change", getSelectedValue1);
+
+    const getSelectedValue2 = function () {
+        const selectedValue2 = $(".dropdown .two").val();
+        console.log(selectedValue2);
+    }
+    $(".dropdown").on("change", getSelectedValue2);
+
+    // coinAddy = $('.address').val();
+    coinName = baseCode + quoteCode;
+    baseCode = getSelectedValue1;
+    quoteCode = getSelectedValue2;
 
     const payload = {
         "amount_base": 1,
@@ -131,3 +148,5 @@ const createOrder = function() {
     });
 }
 createOrder();
+// $('.submit').on('click', createOrder);
+
