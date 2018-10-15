@@ -31,26 +31,33 @@
         <section class="container" id="purchaseWindow">
             <div class="exchangeVals">
                 <form class="deposit">
-                    <select class="dropdown">
-                        <option class="coin1" value="">USD</option>
+                    <select class="quoteSelect">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
                     </select>
-                    <input class="firstCurrency" type="number" placeholder="Amount">
-                    <select id="dropTwo" class="dropdown">
-                            <option class="coin2" value="">ETH</option>
-                        </select>
-                        <p class="title">Wallet Address</p>
-                <input class="address" type="text" placeholder="Address">
-                            <button class="submit">Submit</button>
-                        
+                    <input class="quoteInput" type="number" placeholder="Amount">
+                    <select class="baseSelect">
+                        <option value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="LTC">LTC</option>
+                    </select>
+                    <input class="baseInput" type="number" placeholder="Amount">
+                    <p class="title">Wallet Address</p>
+                    <input class="address" type="text" placeholder="Address">
+                    <button class="submit">Submit</button>
+                    <div class="displayBase"></div>
+
                 </form>
                 <form class="receive">
-                   
-                   
-                    
+
+
+
                 </form>
             </div>
             <form class="wallet">
-                
+
             </form>
         </section>
     </main>
