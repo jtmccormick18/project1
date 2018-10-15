@@ -1,8 +1,10 @@
-
+// Original Code writtin by 
+// Emily Xie
+// Re-written and editted by CryptPro Dev Team, with permission.
 var streams = [];
 var fadeInterval = 1.6;
 var symbolSize = 16;
-
+var prevMax;
 function setup() {
     createCanvas(
         window.innerWidth,
@@ -11,15 +13,20 @@ function setup() {
     background(0);
 
     var x = 0;
-    for (var i = 0; i <= width / symbolSize; i++) {
+    for (var i = 0; i <= 1500 / symbolSize; i++) {
         var stream = new Stream();
         stream.generateSymbols(x, random(-2000, 0));
         streams.push(stream);
         x += symbolSize
     }
+    prevMax = i;
 
     textFont('Consolas');
     textSize(symbolSize);
+}
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+   
 }
 
 function draw() {
@@ -27,11 +34,6 @@ function draw() {
     streams.forEach(function (stream) {
         stream.render();
     });
-}
-
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-    
 }
 
 function Symbol(x, y, speed, first, opacity) {
@@ -97,3 +99,4 @@ function Stream() {
         });
     }
 }
+
