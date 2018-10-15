@@ -32,21 +32,33 @@
         <section class="container" id="purchaseWindow">
             <div class="exchangeVals">
                 <form class="deposit">
-                    <select class="dropdown">
+                    <select class="quoteSelect">
                         <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
                     </select>
-                    <input class="firstCurrency" placeholder="Amount">
+                    <input class="quoteInput" type="number" placeholder="Amount">
+                    <select class="baseSelect">
+                        <option value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="LTC">LTC</option>
+                    </select>
+                    <input class="baseInput" type="number" placeholder="Amount">
+                    <p class="title">Wallet Address</p>
+                    <input class="address" type="text" placeholder="Address">
+                    <button class="submit">Submit</button>
+                    <div class="displayBase"></div>
+
                 </form>
                 <form class="receive">
-                    <select class="dropdown">
-                        <option value="ETH">ETH</option>
-                    </select>
-                    <input class="secondCurrency" placeholder="Amount">
+
+
+
                 </form>
             </div>
             <form class="wallet">
-                <p class="title">Wallet Address</p>
-                <input class="address" type="number" placeholder="Amount">
+
             </form>
         </section>
     </main>
@@ -58,6 +70,7 @@
     <script src="chart-api-bundle.js"></script>
     <script src="chart-data.js"></script>
     <script src="app.js"></script>
+    <script src="exchange-api.js"></script>
     <script src="sketch.js"></script>
 
 </body>
