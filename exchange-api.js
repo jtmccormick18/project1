@@ -72,7 +72,9 @@ function cbPairs(data){
     console.log(data);
 }
 
-const createOrder = function() {
+const createOrder = function(e) {
+    e.preventDefault();
+
     const orderURL = `https://api.nexchange.io/en/api/v1/orders/`
 
     let askingFee;
@@ -88,31 +90,22 @@ const createOrder = function() {
     // baseCode = 'ETH';
     // quoteCode = 'USD';
     type = 'W';
-    coinAddy = '0xfCc2FeedEd9d3503217B9c0e1ce987B4B84DB2b5';
+    // coinAddy = '0xfCc2FeedEd9d3503217B9c0e1ce987B4B84DB2b5';
 
-    const getSelectedValue1 = function () {
-        const selectedValue = $(".dropdown").val();
-        console.log(selectedValue);
-    }
-    $(".dropdown").on("change", getSelectedValue1);
+    coinAddy = $('.address').val();
+    quoteCode = $(".dropdown").val();
+    baseCode = $("#dropTwo").val();
+    coinName = baseCode + quoteCode;
+    
 
-    const getSelectedValue2 = function () {
-        const selectedValue2 = $("#dropTwo").val();
-        console.log(selectedValue2);
-    }
-    $(".dropdown").on("change", getSelectedValue2);
-
-    // coinAddy = $('.address').val();
-    coinName = baseCode += quoteCode;
-    baseCode = getSelectedValue1;
-    quoteCode = getSelectedValue2;
-
-    const baseAmount = $(".firstCurrency").val();
+    const quoteAmount = $(".firstCurrency").val();
     
     console.log(coinName);
+    console.log(baseCode);
+    console.log(quoteCode);
 
     const payload = {
-        "amount_base": 200,
+        "amount_quote": quoteAmount,
         "is_default_rule": true,
         "pair": {
             "name": coinName,
@@ -152,6 +145,6 @@ const createOrder = function() {
         console.log(response);
     });
 }
-createOrder();
-// $('.submit').on('click', createOrder);
+// createOrder();
+$('.submit').on('click', createOrder);
 console.log(createOrder);
