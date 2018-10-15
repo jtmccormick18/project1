@@ -10,9 +10,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f3f3f3;
+    
     font-family: 'Cinzel', serif;
     color: #303030;
+
+    
 }
 
 h1 {
@@ -90,3 +92,12 @@ input{
     border-color: cyan;
     padding: 4px;
 }
+<<<<<<< HEAD
+=======
+
+#defaultCanvas0{
+    position: fixed;
+    z-index: -100000;
+    
+}
+>>>>>>> c43e7e8181664d3e225d5bea8394e34a040d6213
