@@ -35,3 +35,5 @@ const renderCurrencies = function (){
 // }
 
 // $(".submit").on("click", orderSubmit);
+
+

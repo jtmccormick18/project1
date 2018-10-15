@@ -97,18 +97,22 @@ const createOrder = function() {
     $(".dropdown").on("change", getSelectedValue1);
 
     const getSelectedValue2 = function () {
-        const selectedValue2 = $(".dropdown .two").val();
+        const selectedValue2 = $("#dropTwo").val();
         console.log(selectedValue2);
     }
     $(".dropdown").on("change", getSelectedValue2);
 
     // coinAddy = $('.address').val();
-    coinName = baseCode + quoteCode;
+    coinName = baseCode += quoteCode;
     baseCode = getSelectedValue1;
     quoteCode = getSelectedValue2;
 
+    const baseAmount = $(".firstCurrency").val();
+    
+    console.log(coinName);
+
     const payload = {
-        "amount_base": 1,
+        "amount_base": 200,
         "is_default_rule": true,
         "pair": {
             "name": coinName,
@@ -131,6 +135,7 @@ const createOrder = function() {
             "currency_code": 'ETH'
         },
     };
+    console.log(payload);
 
     $.ajax({
         error: function(jqXHR) {
@@ -149,4 +154,4 @@ const createOrder = function() {
 }
 createOrder();
 // $('.submit').on('click', createOrder);
-
+console.log(createOrder);
