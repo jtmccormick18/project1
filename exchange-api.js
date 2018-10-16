@@ -23,33 +23,27 @@ function cbCurrency(data) {
 function cbPairs(data) {
   console.log(data);
 }
-
+let paymentURL;
 const createOrder = function(e) {
   e.preventDefault();
 
   const orderURL = `https://api.nexchange.io/en/api/v1/orders/`;
 
-  let askingFee;
-  let biddingFee;
   let coinName;
   let baseCode;
   let quoteCode;
   let type;
-  let coinAddy;
-  let currencyCode;
+  let address;
 
-  // coinName = 'ETHUSD';
-  // baseCode = 'ETH';
-  // quoteCode = 'USD';
   type = "W";
-  coinAddy = "0xfCc2FeedEd9d3503217B9c0e1ce987B4B84DB2b5";
+  // address = "0xfCc2FeedEd9d3503217B9c0e1ce987B4B84DB2b5";
 
-  // coinAddy = $('.address').val();
-  quoteCode = $(".quoteSelect").val();
-  baseCode = $(".baseSelect").val();
+  quoteCode = $(".exchange-quote .select-value").text();
+  baseCode = $(".exchange-base .select-value").text();
+  address = $(".wallet-address").val();
   coinName = baseCode + quoteCode;
 
-  const quoteAmount = $(".quoteInput").val();
+  const quoteAmount = $(".quote-input").val();
 
   console.log(coinName);
   console.log(baseCode);
@@ -75,8 +69,8 @@ const createOrder = function(e) {
     },
     withdraw_address: {
       type: type,
-      address: coinAddy,
-      currency_code: "ETH"
+      address: address,
+      currency_code: baseCode
     }
   };
   $;
@@ -93,21 +87,22 @@ const createOrder = function(e) {
     }
   }).then(function(response) {
     console.log(response);
+    paymentURL = response.payment_url;
   });
 };
 
 function convertPrice(e) {
     const inputBox = $(e.target);
 
-    const quoteCode = $('.quoteSelect').val();
-    const baseCode = $('.baseSelect').val();
+    const quoteCode = $('.exchange-quote .select-value').text();
+    const baseCode = $('.exchange-base .select-value').text();
     const pair = baseCode + quoteCode;
 
     let quoteAmount;
     let baseAmount;
     let queryURL;
 
-    let inputtingQuote = inputBox.hasClass('quoteInput');
+    let inputtingQuote = inputBox.hasClass('quote-input');
     if (inputtingQuote) {
         quoteAmount = inputBox.val();
         queryURL = `https://api.nexchange.io/en/api/v1/get_price/${pair}/?amount_quote=${quoteAmount}`;
@@ -122,13 +117,18 @@ function convertPrice(e) {
         error: handleError,
     }).then(function(response) {
         if (inputtingQuote) {
-            $('.baseInput').val(response.amount_base);
+            $('.base-input').val(response.amount_base);
         } else {
-            $('.quoteInput').val(response.amount_quote);
+            $('.quote-input').val(response.amount_quote);
         }
     })
 }
-$('.quoteInput, .baseInput').on('input', convertPrice);
-// createOrder();
-$(".submit").on("click", createOrder);
+$('.quote-input, .base-input, .wallet-address').on('input', function(e) {
+  convertPrice(e);
+  createOrder(e);
+});
+$(".submit").on("click", function(e) {
+  e.preventDefault();
+  window.open(paymentURL, '_blank');
+});
 console.log(createOrder);
