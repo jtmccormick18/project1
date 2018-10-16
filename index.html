@@ -14,10 +14,11 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Crypt-Pro</title>
+    <link rel="shortcut icon" type="image/png" href="../project1/Images/logo.png"/>
+    <title>CryptPRO</title>
 </head>
 
-<body >
+<body>
     <header>
         <h1>CryptPRO</h1>
     </header>
@@ -65,6 +66,9 @@
                 <button class="submit">Submit</button>
             </div>
         </div>
+        <div id="tweets">
+            <h1 class="tweetHead">Social Trends</h1>
+        </div>
     </main>
     <footer>
         Copyright ©
@@ -80,6 +84,9 @@
     <script src="app.js"></script>
     <script src="exchange-api.js"></script>
     <script src="sketch.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="twitterAPI.js"></script>
+    <script twttr.widgets.load($('#tweets'))></script>
 
 </body>
 
