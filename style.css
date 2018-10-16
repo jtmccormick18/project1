@@ -23,7 +23,6 @@ header {
     background-color: #353535;
     border-bottom: 8px solid rgb(151, 0, 226);
     text-align: center;
- 
 }
 
 main {
@@ -186,9 +185,12 @@ input:focus {
 }
 #tweets{
     z-index:2;
-    display:inline-block;
+    /* display:inline-block; */
+    display: flex;
+    flex-direction: column;
     width:100%;
     text-align: center;
+    margin-bottom: 30px;
 }
 #tweet iframe {
     border: none;
@@ -196,12 +198,18 @@ input:focus {
     text-align:center;
   }
 .tweetHead{
-    color:black;
+    color:#f6f6f6;
     font-weight:bold;
     text-align: center;
-    background: rgb(151, 0, 226);
     background-size: contain;
-    margin-top:1%;
+    background: rgb(151, 0, 226);
+    border: solid #303030;
+    border-width: 15px 0;
+    margin: 0;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 /* Scroll Bar Styles */
