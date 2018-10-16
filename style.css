@@ -150,7 +150,7 @@ input:focus {
 
     display: flex;
     flex-direction: column;
-    z-index: 99;
+    z-index: 300;
 }
 .option-menu div {
     text-align: center;

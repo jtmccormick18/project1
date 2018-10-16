@@ -1,5 +1,14 @@
-const validFiat = ['USD', 'EUR', 'GBP', 'JPY'];
-const validCrypto = ['BTC', 'ETH', 'LTC'];
+let validFiat = ['USD', 'EUR', 'GBP', 'JPY'];
+let validCrypto = ['BTC', 'ETH', 'LTC', 'BCH'];
+'BIX', 'KCS', 'KNC', 'HT', 'BNT', 'MG', 'COB', 'BNB', 'EOS', 'EOS', 'XVG', 'BDG'
+
+callBitcoinAvgAPI(
+    `https://apiv2.bitcoinaverage.com/symbols/indices/history/local`,
+    function(data) {
+        console.log(data);
+    }
+);
+
 const dropdowns = [];
 class Dropdown {
     constructor(select, options, defaultCode) {

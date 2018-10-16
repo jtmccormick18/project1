@@ -131,4 +131,3 @@ $(".submit").on("click", function(e) {
   e.preventDefault();
   window.open(paymentURL, '_blank');
 });
-console.log(createOrder);

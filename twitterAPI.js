@@ -13,7 +13,6 @@ let encodedBase = btoa(bearerCredens);
 
 
 // console.log(encodedBase);
-console.log(`Basic ${encodedBase}`);
 const twitterAuth = "https://api.twitter.com/oauth2/token";
 const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 const twitterTweets = "https://api.twitter.com/1.1/search/tweets.json?q=%23crypto+%23bitcoin"
