@@ -3,7 +3,7 @@ const ctx = document.getElementById("myChart").getContext('2d');
 Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.Tooltip.positioners.custom = function(elements, eventPosition) {
     return {
-        x: 50,
+        x: 12,
         y: -7
     }
 }
@@ -58,7 +58,8 @@ window.myChart = new Chart(ctx, {
         },
         layout: {
             padding: {
-                top: 6
+                top: 6,
+                left: -10
             }
         },
         scales: {
@@ -68,7 +69,7 @@ window.myChart = new Chart(ctx, {
                     drawBorder: false
                 },
                 ticks: {
-                    display: true,
+                    display: false,
                     fontColor: '#f0f0f0'
                 }
             }],
