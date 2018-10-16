@@ -8,60 +8,64 @@
     <link rel="stylesheet" type="text/css" href="reset.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Crpty-Pro</title>
+    <title>Crypt-Pro</title>
 </head>
 
 <body >
     <header>
-        <h1>CryptPro</h1>
+        <h1>CryptPRO</h1>
     </header>
     <main>
-        <div class='chart'>
+        <div class="chart-dropdowns">
+            <div class="chart-base flex-row">
+                <div class="select-title">Market:</div>
+                <div class="custom-select">
+                    <div class="select-value"></div>
+                </div>
+            </div>
+            <div class="chart-quote flex-row">
+                <div class="select-title">Base:</div>
+                <div class="custom-select">
+                    <div class="select-value"></div>
+                </div>
+            </div>
+            <div class="chart-period flex-row">
+                <div class="select-title">Period:</div>
+                <div class="custom-select">
+                    <div class="select-value"></div>
+                </div>
+            </div>
+        </div>
+        <div class="chart">
             <canvas id="myChart"></canvas>
         </div>
-        <section class="container" id="purchaseWindow">
-            <div class="exchangeVals">
-                <form class="deposit">
-                    <select class="quoteSelect">
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                        <option value="JPY">JPY</option>
-                    </select>
-                    <input class="quoteInput" type="number" placeholder="Amount">
-                    <select class="baseSelect">
-                        <option value="BTC">BTC</option>
-                        <option value="ETH">ETH</option>
-                        <option value="LTC">LTC</option>
-                    </select>
-                    <input class="baseInput" type="number" placeholder="Amount">
-                    <p class="title">Wallet Address</p>
-                    <input class="address" type="text" placeholder="Address">
-                    <button class="submit">Submit</button>
-                    <div class="displayBase"></div>
-
-                </form>
-                <form class="receive">
-
-
-
-                </form>
+        <div class="purchaseWindow">
+            <div class="exchange">
+                <div class="exchange-quote flex-row">
+                    <div class="custom-select">
+                        <div class="select-value"></div>
+                    </div>
+                    <input type="number" class="quote-input" placeholder="DEPOSIT...">
+                </div>
+                <div class="exchange-base flex-row">
+                    <div class="custom-select">
+                        <div class="select-value"></div>
+                    </div>
+                    <input type="number" class="base-input" placeholder="RECEIVE...">
+                </div>
             </div>
-            <form class="wallet">
-
-            </form>
-        </section>
+            <input type="text" class="wallet-address" placeholder="Enter your wallet address here">
+        </div>
     </main>
+    <footer>
+        Copyright ©
+    </footer>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -69,6 +73,7 @@
     <script src="chart.js"></script>
     <script src="chart-api-bundle.js"></script>
     <script src="chart-data.js"></script>
+    <script src="dropdown.js"></script>
     <script src="app.js"></script>
     <script src="exchange-api.js"></script>
     <script src="sketch.js"></script>

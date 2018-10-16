@@ -13,7 +13,7 @@ function setup() {
     background(0);
 
     var x = 0;
-    for (var i = 0; i <= 1500 / symbolSize; i++) {
+    for (var i = 0; i <= width / symbolSize; i++) {
         var stream = new Stream();
         stream.generateSymbols(x, random(-2000, 0));
         streams.push(stream);

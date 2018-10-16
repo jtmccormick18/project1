@@ -10,11 +10,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    background-color: #f6f6f6;
     font-family: 'Cinzel', serif;
-    color: #303030;
-
-    
+    color: #f6f6f6;
 }
 
 h1 {
@@ -25,7 +23,9 @@ h1 {
 
 header {
     width: 100%;
-    background-color: rgb(151, 0, 226);;
+    color: #f6f6f6;
+    background-color: #353535;
+    border-bottom: 8px solid rgb(151, 0, 226);
     text-align: center;
 }
 
@@ -36,12 +36,50 @@ main {
     align-items: center;
 }
 
+.chart-dropdowns {
+    display: flex;
+    justify-content: space-around;
+
+    background-color: #303030;
+    border: solid rgb(151, 0, 226);
+    border-width: 8px 8px 0;
+    width: 800px;
+    margin-top: 30px;
+}
+
+.flex-row {
+    display: flex;
+    flex: 1;
+    margin: 5px 20px;
+}
+
+.select-title {
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px cyan solid;
+    border-width: 0 0 2px 0;
+    align-self: center;
+    padding: 4px;
+    flex: 1;
+}
+
+input:focus {
+    outline: none;
+}
+
+input.wallet-address {
+    width: 500px;
+}
+
 .chart {
     width: 980px;
-    margin: 30px;
+    margin: 0;
     padding: 5px 0;
     background-color: #303030;
-    border: 15px solid rgb(98, 66, 114);
+    border: 8px solid rgb(151, 0, 226);
     
     display: flex;
     flex-direction: column;
@@ -49,33 +87,39 @@ main {
     align-items: center;
 }
 
-#purchaseWindow{
+.purchaseWindow{
     background-color: #303030;
-    border: 15px solid rgb(151, 0, 226);
+    border: 8px solid rgb(151, 0, 226);
     padding: 20px;
+    margin: 30px;
+    width: 700px;
+    height: 150px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
-.exchangeVals {
+.exchange {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-form {
-    display: flex;
-    margin: 20px;
+.custom-select select {
+    display: none;
 }
 
-.dropdown, .title {
-    background-color: rgb(151, 0, 226);;
-    border: 2px solid;
-    border-color: cyan;
-    border-radius: 25px 0px 0px 25px;
-    margin: 0px;
+.custom-select, input {
+    color:white;
+    font-size: 20px;
+    background-color: #303030;
+    width: 150px;
+    height: 30px;
+    border: 2px cyan solid;
+    border-width: 0 0 2px;
+    margin: 10px 0;
     padding: 4px;
 
     display: flex;
@@ -83,18 +127,62 @@ form {
     align-items: center;
 }
 
-.dropdown:focus {
-    outline: none;
+.custom-select {
+    cursor: pointer;
+    position: relative;
 }
 
-input{
-    border-radius: 0px 25px 25px 0px;
-    border-color: cyan;
+.option-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    width: 100%;
+    cursor: default;
+
+    background-color: rgba(255, 255, 255, .8);
+    color: #303030;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+.option-menu div {
+    text-align: center;
     padding: 4px;
+}
+.hidden {
+    display: none;
+}
+.custom-option {
+    cursor: pointer;
+}
+.custom-option:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(255, 255, 255, .5);
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: rgba(255, 255, 255, .5);
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: rgba(255, 255, 255, .5);
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: rgba(255, 255, 255, .5);
 }
 
 #defaultCanvas0{
     position: fixed;
     z-index: -100000;
     
+}
+
+footer {
+    background-color: rgb(151, 0, 226);
+    border-top: 15px solid #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
 }

@@ -45,11 +45,11 @@ const createOrder = function(e) {
   coinAddy = "0xfCc2FeedEd9d3503217B9c0e1ce987B4B84DB2b5";
 
   // coinAddy = $('.address').val();
-  quoteCode = $(".quoteSelect").val();
-  baseCode = $(".baseSelect").val();
+  quoteCode = $(".exchange-quote .select-value").innerText();
+  baseCode = $(".exchange-base .select-value").innerText();
   coinName = baseCode + quoteCode;
 
-  const quoteAmount = $(".quoteInput").val();
+  const quoteAmount = $(".quote-input").val();
 
   console.log(coinName);
   console.log(baseCode);
@@ -99,15 +99,15 @@ const createOrder = function(e) {
 function convertPrice(e) {
     const inputBox = $(e.target);
 
-    const quoteCode = $('.quoteSelect').val();
-    const baseCode = $('.baseSelect').val();
+    const quoteCode = $('.exchange-quote .select-value').text();
+    const baseCode = $('.exchange-base .select-value').text();
     const pair = baseCode + quoteCode;
 
     let quoteAmount;
     let baseAmount;
     let queryURL;
 
-    let inputtingQuote = inputBox.hasClass('quoteInput');
+    let inputtingQuote = inputBox.hasClass('quote-input');
     if (inputtingQuote) {
         quoteAmount = inputBox.val();
         queryURL = `https://api.nexchange.io/en/api/v1/get_price/${pair}/?amount_quote=${quoteAmount}`;
@@ -122,13 +122,13 @@ function convertPrice(e) {
         error: handleError,
     }).then(function(response) {
         if (inputtingQuote) {
-            $('.baseInput').val(response.amount_base);
+            $('.base-input').val(response.amount_base);
         } else {
-            $('.quoteInput').val(response.amount_quote);
+            $('.quote-input').val(response.amount_quote);
         }
     })
 }
-$('.quoteInput, .baseInput').on('input', convertPrice);
+$('.quote-input, .base-input').on('input', convertPrice);
 // createOrder();
 $(".submit").on("click", createOrder);
 console.log(createOrder);

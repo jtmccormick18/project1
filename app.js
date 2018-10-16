@@ -1,4 +1,4 @@
 $(document).ready(function() {
-    setParams('BTC', 'USD', 'monthly'); // sets query parameters for Bitcoin Average API
+    setParams();
     updateChart(); // renders the chart
 });
