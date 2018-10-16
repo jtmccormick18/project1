@@ -2,32 +2,27 @@ html {
     height: 100%
 }
 
-.displayBase {
-    background-color: white;
-}
 body {
+    overflow-x: hidden;
     min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: #f6f6f6;
     font-family: 'Cinzel', serif;
     color: #f6f6f6;
+
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
+h1{
     font-size: 40px;
-    padding: 30px;
-    
+    margin: 20px;
 }
 
 header {
-    width: 100%;
     color: #f6f6f6;
     background-color: #353535;
     border-bottom: 8px solid rgb(151, 0, 226);
     text-align: center;
- 
 }
 
 main {
@@ -37,22 +32,30 @@ main {
     align-items: center;
 }
 
-.chart-dropdowns {
-    display: flex;
-    justify-content: space-around;
-
-    background-color: #303030;
-    border: solid rgb(151, 0, 226);
-    border-width: 8px 8px 0;
-    width: 800px;
-    margin-top: 30px;
-}
-
-.flex-row {
+.input-row {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     flex: 1;
     margin: 5px 20px;
+}
+
+.input-row > * {
+    flex: 1;
+}
+
+.chart-dropdowns {
+    display: flex;
+    justify-content: space-around;
+
+    box-sizing: border-box;
+    background-color: #303030;
+    border: solid rgb(151, 0, 226);
+    border-width: 8px 8px 0;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 30px;
+    padding: 30px;
 }
 
 .select-title {
@@ -65,19 +68,16 @@ main {
     border-width: 0 0 2px 0;
     align-self: center;
     padding: 4px;
-    flex: 1;
 }
 
 input:focus {
     outline: none;
 }
 
-input.wallet-address {
-    width: 500px;
-}
-
 .chart {
-    width: 980px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 980px;
     margin: 0;
     padding: 5px 0;
     background-color: #303030;
@@ -89,13 +89,18 @@ input.wallet-address {
     align-items: center;
 }
 
+.wallet {
+    width: 100%;
+}
+
 .purchaseWindow{
     background-color: #303030;
     border: 8px solid rgb(151, 0, 226);
     padding: 20px;
     margin: 30px;
-    width: 700px;
-    height: 150px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 700px;
 
     display: flex;
     flex-direction: column;
@@ -117,7 +122,6 @@ input.wallet-address {
     color:white;
     font-size: 20px;
     background-color: #303030;
-    width: 150px;
     height: 30px;
     border: 2px cyan solid;
     border-width: 0 0 2px;
@@ -146,6 +150,7 @@ input.wallet-address {
 
     display: flex;
     flex-direction: column;
+    z-index: 99;
 }
 .option-menu div {
     text-align: center;
@@ -180,9 +185,12 @@ input.wallet-address {
 }
 #tweets{
     z-index:2;
-    display:inline-block;
+    /* display:inline-block; */
+    display: flex;
+    flex-direction: column;
     width:100%;
     text-align: center;
+    margin-bottom: 30px;
 }
 #tweet iframe {
     border: none;
@@ -190,12 +198,18 @@ input.wallet-address {
     text-align:center;
   }
 .tweetHead{
-    color:black;
+    color:#f6f6f6;
     font-weight:bold;
     text-align: center;
-    background: rgb(151, 0, 226);
     background-size: contain;
-    margin-top:1%;
+    background: rgb(151, 0, 226);
+    border: solid #303030;
+    border-width: 15px 0;
+    margin: 0;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 /* Scroll Bar Styles */
@@ -226,8 +240,9 @@ input.wallet-address {
     background-color: rgba(151, 0, 226, .7);
     color: #f6f6f6;
     width: 100px;
-    margin: 10px 20px;
+    margin: 10px 0 10px 20px;
     cursor: pointer;
+    flex: 0;
 }
 .submit:active {
     background-color: rgba(151, 0, 226, .5);
@@ -245,4 +260,17 @@ footer {
     align-items: center;
     height: 200px;
     width: 100%;
+}
+
+.displayBase {
+    background-color: white;
+}
+
+@media only screen and (max-width: 800px) {
+    .chart-dropdowns {
+        flex-direction: column;
+    }
+    .exchange {
+        flex-direction: column;
+    }
 }
