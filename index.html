@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="reset.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -16,7 +17,7 @@
     <title>Crypt-Pro</title>
 </head>
 
-<body>
+<body >
     <header>
         <h1>CryptPRO</h1>
     </header>
@@ -50,18 +51,24 @@
                     <div class="custom-select">
                         <div class="select-value"></div>
                     </div>
-                    <input type="text" class="deposit-amount" placeholder="DEPOSIT...">
+                    <input type="number" class="quote-input" placeholder="DEPOSIT...">
                 </div>
                 <div class="exchange-base flex-row">
                     <div class="custom-select">
                         <div class="select-value"></div>
                     </div>
-                    <input type="text" class="receive-amount" placeholder="RECEIVE...">
+                    <input type="number" class="base-input" placeholder="RECEIVE...">
                 </div>
             </div>
-            <input type="text" class="wallet-address" placeholder="Enter your wallet address here">
+            <div class="flex-row">
+                <input type="text" class="wallet-address" placeholder="Enter your wallet address here">
+                <button class="submit">Submit</button>
+            </div>
         </div>
     </main>
+    <footer>
+        Copyright ©
+    </footer>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -71,6 +78,9 @@
     <script src="chart-data.js"></script>
     <script src="dropdown.js"></script>
     <script src="app.js"></script>
+    <script src="exchange-api.js"></script>
+    <script src="sketch.js"></script>
+
 </body>
 
 </html>

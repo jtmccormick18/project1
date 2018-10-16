@@ -1,6 +1,10 @@
 html {
     height: 100%
 }
+
+.displayBase {
+    background-color: white;
+}
 body {
     min-height: 100%;
     display: flex;
@@ -21,7 +25,7 @@ header {
     width: 100%;
     color: #f6f6f6;
     background-color: #353535;
-    border-bottom: 15px solid rgb(151, 0, 226);
+    border-bottom: 8px solid rgb(151, 0, 226);
     text-align: center;
 }
 
@@ -38,13 +42,14 @@ main {
 
     background-color: #303030;
     border: solid rgb(151, 0, 226);
-    border-width: 15px 15px 0;
+    border-width: 8px 8px 0;
     width: 800px;
     margin-top: 30px;
 }
 
 .flex-row {
     display: flex;
+    justify-content: center;
     flex: 1;
     margin: 5px 20px;
 }
@@ -75,7 +80,7 @@ input.wallet-address {
     margin: 0;
     padding: 5px 0;
     background-color: #303030;
-    border: 15px solid rgb(151, 0, 226);
+    border: 8px solid rgb(151, 0, 226);
     
     display: flex;
     flex-direction: column;
@@ -85,7 +90,7 @@ input.wallet-address {
 
 .purchaseWindow{
     background-color: #303030;
-    border: 15px solid rgb(151, 0, 226);
+    border: 8px solid rgb(151, 0, 226);
     padding: 20px;
     margin: 30px;
     width: 700px;
@@ -134,7 +139,8 @@ input.wallet-address {
     width: 100%;
     cursor: default;
 
-    background-color: rgb(151, 0, 226);
+    background-color: rgba(255, 255, 255, .8);
+    color: #303030;
     border-radius: 5px;
 
     display: flex;
@@ -164,4 +170,36 @@ input.wallet-address {
 }
 :-moz-placeholder { /* Firefox 18- */
     color: rgba(255, 255, 255, .5);
+}
+
+#defaultCanvas0{
+    position: fixed;
+    z-index: -100000;
+    
+}
+
+.submit {
+    border: 2px outset rgb(151, 0, 226);
+    background-color: rgba(151, 0, 226, .7);
+    color: #f6f6f6;
+    width: 100px;
+    margin: 10px 20px;
+    cursor: pointer;
+}
+.submit:active {
+    background-color: rgba(151, 0, 226, .5);
+    border-style: inset;
+}
+.submit:focus {
+    outline: none;
+}
+
+footer {
+    background-color: rgb(151, 0, 226);
+    border-top: 15px solid #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
 }

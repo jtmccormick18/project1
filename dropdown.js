@@ -36,7 +36,7 @@ class Dropdown {
             }
         }
     }
-    showAllOptions() {
+    showOptions() {
         for (let i = 0; i < this.optionDivs.length; i++) {
             this.optionDivs[i].classList.remove('hidden');
         }
@@ -68,14 +68,15 @@ function hideMenus(clickedDropdown) {
 function checkForDuplicates(drop1, drop2, switchCheck) {
     if (drop1.options.includes(drop2.codeContainer.innerHTML)) {
         drop1.hideOption(drop2.codeContainer.innerHTML)
-    } else {
-        drop1.showAllOptions();
     }
     if (!switchCheck) {
         checkForDuplicates(drop2, drop1, true);
     }
 }
 function updateOptions() {
+    for (let i = 0; i < dropdowns.length; i++) {
+        dropdowns[i].showOptions();
+    }
     checkForDuplicates(chartQuote, chartBase);
     checkForDuplicates(exchangeQuote, exchangeBase);
 }
