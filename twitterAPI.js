@@ -46,7 +46,8 @@ $.ajax({
                     theme: 'dark',
                     cards: 'hidden',
                     conversation: 'none',
-                    align: 'center'  
+                    align: 'center',
+                    linkColor: '#cc66ff'
                 }
             ).then(function(el){
             });
