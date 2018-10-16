@@ -27,6 +27,7 @@ header {
     background-color: #353535;
     border-bottom: 8px solid rgb(151, 0, 226);
     text-align: center;
+ 
 }
 
 main {
@@ -197,7 +198,30 @@ input.wallet-address {
     margin-top:1%;
 }
 
-.submit{
+/* Scroll Bar Styles */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(151, 0, 226); 
+    border-left: 1px solid cyan;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, .6); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, .8); 
+}
+
+.submit {
     border: 2px outset rgb(151, 0, 226);
     background-color: rgba(151, 0, 226, .7);
     color: #f6f6f6;
