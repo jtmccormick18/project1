@@ -33,6 +33,7 @@ function bittrexbuy($apikey, $apisecret, $symbol, $quant, $rate){
 }
 
 
+
 // coinmarketcap api
 $cnmkt = "https://api.coinmarketcap.com/v2/ticker/?limit=50"; //getting top 50 cryptos from coinmarket cap
 $fgc = json_decode(file_get_contents($cnmkt), true);
