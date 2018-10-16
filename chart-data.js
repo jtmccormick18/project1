@@ -5,11 +5,10 @@ let period;
 function getQueryURL() {
     return `https://apiv2.bitcoinaverage.com/indices/global/history/${base}${quote}?period=${period}&format=json`;
 }
-
 function setParams(newBase, newQuote, newPeriod) {
-    base = newBase || base;
-    quote = newQuote || quote;
-    period = newPeriod || period;
+    base = newBase || chartBase.codeContainer.innerHTML;
+    quote = newQuote || chartQuote.codeContainer.innerHTML;
+    period = (newPeriod || chartPeriod.codeContainer.innerHTML).toLowerCase().replace(/\s/g, '');
 }
 
 function getChartData(cb) {

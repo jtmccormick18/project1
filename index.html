@@ -21,65 +21,46 @@
         <h1>CryptPRO</h1>
     </header>
     <main>
+        <div class="chart-dropdowns">
+            <div class="chart-base flex-row">
+                <div class="select-title">Market:</div>
+                <div class="custom-select">
+                    <div class="select-value"></div>
+                </div>
+            </div>
+            <div class="chart-quote flex-row">
+                <div class="select-title">Base:</div>
+                <div class="custom-select">
+                    <div class="select-value"></div>
+                </div>
+            </div>
+            <div class="chart-period flex-row">
+                <div class="select-title">Period:</div>
+                <div class="custom-select">
+                    <div class="select-value"></div>
+                </div>
+            </div>
+        </div>
         <div class="chart">
             <canvas id="myChart"></canvas>
         </div>
-        <section class="container" id="purchaseWindow">
-            <div class="exchangeVals">
-                <form class="deposit">
-                    <select class="dropdown" id="quoteSelect">
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                        <option value="JPY">JPY</option>
-                        <option value="BTC">Bitcoin</option>
-                        <option value="BIX">BiBox Token</option>
-                        <option value="KCS">KuCoin Shares</option>
-                        <option value="KNC">Kybu Network</option>
-                        <option value="BNT">Bancor</option>
-                        <option value="HT">Huobi Token</option>
-                        <option value="OMG">Omise Geo</option>
-                        <option value="LOB">Lobinhood</option>
-                        <option value="ETH">Ethereum</option>
-                        <option value="BNB">Binance Coin</option>
-                        <option value="EOS">EOS</option>
-                        <option value="BCH">Bitcoin Cash</option>
-                        <option value="VUG">Verge</option>
-                        <option value="BDG">Bit Degree</option>
-                        <option value="LTC">Lite Coin</option>
-                        <option value="BMH">Block Mesh</option>
-                        <option value="Doge">Doge</option>
-                    </select>
-                    <input class="firstCurrency" placeholder="Amount">
-                </form>
-                <form class="receive">
-                    <select class="dropdown" id="baseSelect">
-                        <option value="BTC">Bitcoin</option>
-                        <option value="BIX">BiBox Token</option>
-                        <option value="KCS">KuCoin Shares</option>
-                        <option value="KNC">Kybu Network</option>
-                        <option value="BNT">Bancor</option>
-                        <option value="HT">Huobi Token</option>
-                        <option value="OMG">Omise Geo</option>
-                        <option value="LOB">Lobinhood</option>
-                        <option value="ETH">Ethereum</option>
-                        <option value="BNB">Binance Coin</option>
-                        <option value="EOS">EOS</option>
-                        <option value="BCH">Bitcoin Cash</option>
-                        <option value="VUG">Verge</option>
-                        <option value="BDG">Bit Degree</option>
-                        <option value="LTC">Lite Coin</option>
-                        <option value="BMH">Block Mesh</option>
-                        <option value="Doge">Doge</option>
-                    </select>
-                    <input class="secondCurrency" placeholder="Amount">
-                </form>
+        <div class="purchaseWindow">
+            <div class="exchange">
+                <div class="exchange-quote flex-row">
+                    <div class="custom-select">
+                        <div class="select-value"></div>
+                    </div>
+                    <input type="text" class="deposit-amount" placeholder="DEPOSIT...">
+                </div>
+                <div class="exchange-base flex-row">
+                    <div class="custom-select">
+                        <div class="select-value"></div>
+                    </div>
+                    <input type="text" class="receive-amount" placeholder="RECEIVE...">
+                </div>
             </div>
-            <form class="wallet">
-                <p class="title">Wallet Address</p>
-                <input class="address" placeholder="Address">
-            </form>
-        </section>
+            <input type="text" class="wallet-address" placeholder="Enter your wallet address here">
+        </div>
     </main>
 
 
@@ -88,6 +69,7 @@
     <script src="chart.js"></script>
     <script src="chart-api-bundle.js"></script>
     <script src="chart-data.js"></script>
+    <script src="dropdown.js"></script>
     <script src="app.js"></script>
 </body>
 
