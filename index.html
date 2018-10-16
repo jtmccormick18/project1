@@ -30,57 +30,32 @@
         <section class="container" id="purchaseWindow">
             <div class="exchangeVals">
                 <form class="deposit">
-                    <select class="dropdown" id="quoteSelect">
+                    <select class="quoteSelect">
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                         <option value="GBP">GBP</option>
                         <option value="JPY">JPY</option>
-                        <option value="BTC">Bitcoin</option>
-                        <option value="BIX">BiBox Token</option>
-                        <option value="KCS">KuCoin Shares</option>
-                        <option value="KNC">Kybu Network</option>
-                        <option value="BNT">Bancor</option>
-                        <option value="HT">Huobi Token</option>
-                        <option value="OMG">Omise Geo</option>
-                        <option value="LOB">Lobinhood</option>
-                        <option value="ETH">Ethereum</option>
-                        <option value="BNB">Binance Coin</option>
-                        <option value="EOS">EOS</option>
-                        <option value="BCH">Bitcoin Cash</option>
-                        <option value="VUG">Verge</option>
-                        <option value="BDG">Bit Degree</option>
-                        <option value="LTC">Lite Coin</option>
-                        <option value="BMH">Block Mesh</option>
-                        <option value="Doge">Doge</option>
                     </select>
-                    <input class="firstCurrency" placeholder="Amount">
+                    <input class="quoteInput" type="number" placeholder="Amount">
+                    <select class="baseSelect">
+                        <option value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="LTC">LTC</option>
+                    </select>
+                    <input class="baseInput" type="number" placeholder="Amount">
+                    <p class="title">Wallet Address</p>
+                    <input class="address" type="text" placeholder="Address">
+                    <button class="submit">Submit</button>
+                    <div class="displayBase"></div>
+
                 </form>
                 <form class="receive">
-                    <select class="dropdown" id="baseSelect">
-                        <option value="BTC">Bitcoin</option>
-                        <option value="BIX">BiBox Token</option>
-                        <option value="KCS">KuCoin Shares</option>
-                        <option value="KNC">Kybu Network</option>
-                        <option value="BNT">Bancor</option>
-                        <option value="HT">Huobi Token</option>
-                        <option value="OMG">Omise Geo</option>
-                        <option value="LOB">Lobinhood</option>
-                        <option value="ETH">Ethereum</option>
-                        <option value="BNB">Binance Coin</option>
-                        <option value="EOS">EOS</option>
-                        <option value="BCH">Bitcoin Cash</option>
-                        <option value="VUG">Verge</option>
-                        <option value="BDG">Bit Degree</option>
-                        <option value="LTC">Lite Coin</option>
-                        <option value="BMH">Block Mesh</option>
-                        <option value="Doge">Doge</option>
-                    </select>
-                    <input class="secondCurrency" placeholder="Amount">
+
+
+
                 </form>
             </div>
             <form class="wallet">
-                <p class="title">Wallet Address</p>
-                <input class="address" placeholder="Address">
             </form>
         </section>
         <section id="tweets">
@@ -95,6 +70,7 @@
     <script src="chart-api-bundle.js"></script>
     <script src="chart-data.js"></script>
     <script src="app.js"></script>
+    <script src="exchange-api.js"></script>
     <script src="sketch.js"></script>
     <script src="https://platform.twitter.com/widgets.js"></script>
     <script src="twitterAPI.js"></script>
