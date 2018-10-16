@@ -65,6 +65,9 @@
                 <button class="submit">Submit</button>
             </div>
         </div>
+        <div id="tweets">
+            <h1 class="tweetHead">Social Trends</h1>
+        </div>
     </main>
     <footer>
         Copyright ©
@@ -80,6 +83,9 @@
     <script src="app.js"></script>
     <script src="exchange-api.js"></script>
     <script src="sketch.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="twitterAPI.js"></script>
+    <script twttr.widgets.load($('#tweets'))></script>
 
 </body>
 

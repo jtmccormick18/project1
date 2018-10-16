@@ -177,8 +177,27 @@ input.wallet-address {
     z-index: -100000;
     
 }
+#tweets{
+    z-index:2;
+    display:inline-block;
+    width:100%;
+    text-align: center;
+}
+#tweet iframe {
+    border: none;
+    box-shadow: none;
+    text-align:center;
+  }
+.tweetHead{
+    color:black;
+    font-weight:bold;
+    text-align: center;
+    background: rgb(151, 0, 226);
+    background-size: contain;
+    margin-top:1%;
+}
 
-.submit {
+.submit{
     border: 2px outset rgb(151, 0, 226);
     background-color: rgba(151, 0, 226, .7);
     color: #f6f6f6;
