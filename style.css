@@ -23,6 +23,7 @@ header {
     width: 100%;
     background-color: rgb(151, 0, 226);;
     text-align: center;
+ 
 }
 
 main {
@@ -94,3 +95,27 @@ input{
     z-index: -100000;
     
 }
+
+/* Scroll Bar Styles */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(151, 0, 226); 
+    border-left: 1px solid cyan;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, .6); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, .8); 
+}
+
