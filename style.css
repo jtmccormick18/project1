@@ -1,10 +1,11 @@
-html {
-    height: 100%
-}
+/* html {
+    height: 100vh;
+    width: 100vw;
+} */
 
 body {
-    overflow-x: hidden;
-    min-height: 100%;
+    /* min-height: 100%;
+    max-width: 100%; */
     background-color: #303030;
     font-family: 'Cinzel', serif;
     color: #f6f6f6;
@@ -30,24 +31,12 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f6f6f6c0;
-    /* border: solid #f6f6f6; */
-    /* border-width: 0 5px; */
+    background-color: rgba(244, 244, 244, .75);
     align-self: center;
     width: 100%;
     max-width: 1200px;
-}
-
-.input-row {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    margin: 5px 20px;
-}
-
-.input-row > * {
-    flex: 1;
+    border: solid rgba(151, 0, 226, 0.2);
+    border-width: 0 calc((100vw - 1200px - 10px) / 2);
 }
 
 .chart-dropdowns {
@@ -56,7 +45,6 @@ main {
 
     box-sizing: border-box;
     background-color: #303030;
-    /* border: solid #f6f6f6; */
     border-width: 8px 8px 0;
     border-radius: 10px 10px 0 0;
     width: 100%;
@@ -64,35 +52,6 @@ main {
     margin-top: 30px;
     padding: 30px;
 }
-
-.select-title {
-    height: 30px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px cyan solid;
-    border-width: 0 0 2px 0;
-    align-self: center;
-    padding: 4px;
-}
-
-input:focus {
-    outline: none;
-}
-
-input {
-    -webkit-appearance: none;
-    font-family: 'Inconsolata', monospace;
-    padding: 0 40px;
-}
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-
 .chart {
     box-sizing: border-box;
     width: 100%;
@@ -100,7 +59,6 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
     padding: 5px 0;
     background-color: #303030;
-    /* border: 8px solid #f6f6f6; */
     border-radius: 10px;
     
     display: flex;
@@ -108,14 +66,8 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
 }
-
-.wallet {
-    width: 100%;
-}
-
-.purchaseWindow{
+.purchase-window{
     background-color: #303030;
-    /* border: 8px solid #f6f6f6; */
     border-radius: 10px;
     padding: 20px;
     margin: 30px;
@@ -128,17 +80,57 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: space-around;
     align-items: center;
 }
-
 .exchange {
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
+.wallet {
+    width: 100%;
+}
+.submit {
+    font-family: inherit;
+    border: 2px outset rgb(151, 0, 226);
+    background-color: rgba(151, 0, 226, .7);
+    color: #f6f6f6;
+    margin: 10px 0 10px 20px;
+    padding: 0 30px;
+    cursor: pointer;
+    flex: 0;
+}
+.submit:active {
+    background-color: rgba(151, 0, 226, .5);
+    border-style: inset;
+}
+.submit:focus {
+    outline: none;
+}
+
+.input-row {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin: 5px 20px;
+}
+.input-row > *:not(.submit) {
+    flex: 1;
+}
+.select-title {
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px cyan solid;
+    border-width: 0 0 2px 0;
+    align-self: center;
+    padding: 4px;
+}
 
 .custom-select select {
     display: none;
 }
-
 .custom-select, input {
     background-color: #303030;
     color:white;
@@ -153,12 +145,10 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     align-items: center;
 }
-
 .custom-select {
     cursor: pointer;
     position: relative;
 }
-
 .option-menu {
     position: absolute;
     top: calc(100% + 4px);
@@ -173,18 +163,28 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction: column;
     z-index: 99;
 }
-.option-menu div {
+.custom-option {
     text-align: center;
     padding: 4px;
-}
-.hidden {
-    display: none;
-}
-.custom-option {
     cursor: pointer;
 }
 .custom-option:hover {
     background-color: rgba(0, 0, 0, .1);
+}
+.hidden {
+    display: none;
+}
+
+input:focus {
+    outline: none;
+}
+input {
+    -webkit-appearance: none;
+    font-family: 'Inconsolata', monospace;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: rgba(255, 255, 255, .5);
@@ -199,14 +199,8 @@ input[type=number]::-webkit-outer-spin-button {
     color: rgba(255, 255, 255, .5);
 }
 
-#defaultCanvas0{
-    position: fixed;
-    z-index: -100000;
-    
-}
 #tweets{
     z-index:2;
-    /* display:inline-block; */
     display: flex;
     flex-direction: column;
     width:100%;
@@ -257,24 +251,6 @@ input[type=number]::-webkit-outer-spin-button {
     background: #f6f6f6; 
 }
 
-.submit {
-    font-family: inherit;
-    border: 2px outset rgb(151, 0, 226);
-    background-color: rgba(151, 0, 226, .7);
-    color: #f6f6f6;
-    width: 100px;
-    margin: 10px 0 10px 20px;
-    cursor: pointer;
-    flex: 0;
-}
-.submit:active {
-    background-color: rgba(151, 0, 226, .5);
-    border-style: inset;
-}
-.submit:focus {
-    outline: none;
-}
-
 footer {
     background-color: rgb(151, 0, 226);
     border-top: 15px solid #f6f6f6;
@@ -285,9 +261,12 @@ footer {
     width: 100%;
 }
 
-.displayBase {
-    background-color: white;
+#defaultCanvas0{
+    position: fixed;
+    z-index: -100000;
+    
 }
+
 @media only screen and (max-width: 980px) {
     .chart {
         border-radius: 0;
@@ -303,9 +282,12 @@ footer {
     }
 }
 @media only screen and (max-width: 700px) {
-    .chart-dropdowns, .chart, .purchaseWindow {
+    .chart-dropdowns, .chart, .purchase-window {
         margin: 0;
         border-radius: 0;
         border-width: 8px 0 0;
+    }
+    main {
+        padding-top: 50px;
     }
 }
