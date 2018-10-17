@@ -1,12 +1,5 @@
-/* html {
-    height: 100vh;
-    width: 100vw;
-} */
-
 body {
-    /* min-height: 100%;
-    max-width: 100%; */
-    background-color: #303030;
+    background-color: #000000;
     font-family: 'Cinzel', serif;
     color: #f6f6f6;
 
@@ -20,13 +13,13 @@ h1{
 }
 
 header {
-    color: #f6f6f6;
     background-color: rgb(151, 0, 226);
     border-bottom: 8px solid #f6f6f6;
     text-align: center;
 }
 
 main {
+    box-sizing: border-box;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -36,7 +29,8 @@ main {
     width: 100%;
     max-width: 1200px;
     border: solid rgba(151, 0, 226, 0.2);
-    border-width: 0 calc((100vw - 1200px - 10px) / 2);
+    /* border-color: #f6f6f6; */
+    border-width: 0 40px;
 }
 
 .chart-dropdowns {
@@ -213,7 +207,6 @@ input[type=number]::-webkit-outer-spin-button {
     text-align:center;
   }
 .tweetHead{
-    color:#f6f6f6;
     font-weight:bold;
     text-align: center;
     background-size: contain;
@@ -289,5 +282,21 @@ footer {
     }
     main {
         padding-top: 50px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    input {
+        width: 100%;
+        font-size: 15px;
+    }
+    main {
+        border-width: 0;
+    }
+    .wallet {
+        flex-direction: column;
+        align-items: center;
+    }
+    .submit {
+        padding: 10px 20px;
     }
 }
