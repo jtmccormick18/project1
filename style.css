@@ -119,6 +119,9 @@ main {
     align-self: center;
     padding: 4px;
 }
+.error {
+    color: rgb(255, 153, 153);
+}
 
 .custom-select select {
     display: none;
