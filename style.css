@@ -1,11 +1,5 @@
-html {
-    height: 100%
-}
-
 body {
-    overflow-x: hidden;
-    min-height: 100%;
-    background-color: #f6f6f6;
+    background-color: #000000;
     font-family: 'Cinzel', serif;
     color: #f6f6f6;
 
@@ -19,17 +13,89 @@ h1{
 }
 
 header {
-    color: #f6f6f6;
-    background-color: #353535;
-    border-bottom: 8px solid rgb(151, 0, 226);
+    background-color: rgb(151, 0, 226);
+    border-bottom: 8px solid #f6f6f6;
     text-align: center;
 }
 
 main {
+    box-sizing: border-box;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(244, 244, 244, .75);
+    align-self: center;
+    width: 100%;
+    max-width: 1200px;
+    border: solid rgba(151, 0, 226, 0.2);
+    border-width: 0 40px;
+}
+
+.chart-dropdowns {
+    display: flex;
+    justify-content: space-around;
+
+    box-sizing: border-box;
+    background-color: #303030;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 30px;
+    padding: 30px;
+}
+.chart {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 980px;
+    margin: 0;
+    padding: 5px 0;
+    background-color: #303030;
+    border-radius: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.purchase-window{
+    background-color: #303030;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.exchange {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.wallet {
+    width: 100%;
+}
+.submit {
+    font-family: inherit;
+    border: 2px outset rgb(151, 0, 226);
+    background-color: rgba(151, 0, 226, .7);
+    color: #f6f6f6;
+    margin: 10px 0 10px 20px;
+    padding: 0 30px;
+    cursor: pointer;
+    flex: 0;
+}
+.submit:active {
+    background-color: rgba(151, 0, 226, .5);
+    border-style: inset;
+}
+.submit:focus {
+    outline: none;
 }
 
 .input-row {
@@ -39,25 +105,9 @@ main {
     flex: 1;
     margin: 5px 20px;
 }
-
-.input-row > * {
+.input-row > *:not(.submit) {
     flex: 1;
 }
-
-.chart-dropdowns {
-    display: flex;
-    justify-content: space-around;
-
-    box-sizing: border-box;
-    background-color: #303030;
-    border: solid rgb(151, 0, 226);
-    border-width: 8px 8px 0;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 30px;
-    padding: 30px;
-}
-
 .select-title {
     height: 30px;
     font-size: 20px;
@@ -70,62 +120,13 @@ main {
     padding: 4px;
 }
 
-input:focus {
-    outline: none;
-}
-
-input {
-    -webkit-appearance: none;
-}
-
-.chart {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 980px;
-    margin: 0;
-    padding: 5px 0;
-    background-color: #303030;
-    border: 8px solid rgb(151, 0, 226);
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.wallet {
-    width: 100%;
-}
-
-.purchaseWindow{
-    background-color: #303030;
-    border: 8px solid rgb(151, 0, 226);
-    padding: 20px;
-    margin: 30px;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 700px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.exchange {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
 .custom-select select {
     display: none;
 }
-
 .custom-select, input {
+    background-color: #303030;
     color:white;
     font-size: 20px;
-    background-color: #303030;
     height: 30px;
     border: 2px cyan solid;
     border-width: 0 0 2px;
@@ -136,19 +137,17 @@ input {
     justify-content: center;
     align-items: center;
 }
-
 .custom-select {
     cursor: pointer;
     position: relative;
 }
-
 .option-menu {
     position: absolute;
     top: calc(100% + 4px);
     width: 100%;
     cursor: default;
 
-    background-color: rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, .9);
     color: #303030;
     border-radius: 5px;
 
@@ -156,18 +155,28 @@ input {
     flex-direction: column;
     z-index: 300;
 }
-.option-menu div {
+.custom-option {
     text-align: center;
     padding: 4px;
-}
-.hidden {
-    display: none;
-}
-.custom-option {
     cursor: pointer;
 }
 .custom-option:hover {
     background-color: rgba(0, 0, 0, .1);
+}
+.hidden {
+    display: none;
+}
+
+input:focus {
+    outline: none;
+}
+input {
+    -webkit-appearance: none;
+    font-family: 'Inconsolata', monospace;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: rgba(255, 255, 255, .5);
@@ -182,14 +191,8 @@ input {
     color: rgba(255, 255, 255, .5);
 }
 
-#defaultCanvas0{
-    position: fixed;
-    z-index: -100000;
-    
-}
 #tweets{
     z-index:2;
-    /* display:inline-block; */
     display: flex;
     flex-direction: column;
     width:100%;
@@ -202,12 +205,11 @@ input {
     text-align:center;
   }
 .tweetHead{
-    color:#f6f6f6;
     font-weight:bold;
     text-align: center;
     background-size: contain;
     background: rgb(151, 0, 226);
-    border: solid #303030;
+    border: solid #f6f6f6;
     border-width: 15px 0;
     margin: 0;
     padding: 20px;
@@ -226,40 +228,23 @@ input {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: rgba(151, 0, 226); 
-    border-left: 1px solid cyan;
+    background: #252525; 
+    border-left: 1px solid #f6f6f6;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 255, 255, .6); 
+    background: #f6f6f6de; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 255, 255, .8); 
-}
-
-.submit {
-    border: 2px outset rgb(151, 0, 226);
-    background-color: rgba(151, 0, 226, .7);
-    color: #f6f6f6;
-    width: 100px;
-    margin: 10px 0 10px 20px;
-    cursor: pointer;
-    flex: 0;
-}
-.submit:active {
-    background-color: rgba(151, 0, 226, .5);
-    border-style: inset;
-}
-.submit:focus {
-    outline: none;
+    background: #f6f6f6; 
 }
 
 footer {
     background-color: rgb(151, 0, 226);
-    border-top: 15px solid #303030;
+    border-top: 15px solid #f6f6f6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -267,15 +252,60 @@ footer {
     width: 100%;
 }
 
-.displayBase {
-    background-color: white;
+#defaultCanvas0{
+    position: fixed;
+    z-index: -100000;
+    
 }
 
+@media only screen and (max-width: 1150px) {
+    .chart {
+        border-radius: 0;
+        border-width: 8px 0;
+        max-width: none;
+    }
+}
+@media only screen and (max-width: 970px) {
+    .chart-dropdowns {
+        border-radius: 0;
+        border-width: 8px 0;
+        max-width: none;
+    }
+}
 @media only screen and (max-width: 800px) {
     .chart-dropdowns {
         flex-direction: column;
     }
     .exchange {
         flex-direction: column;
+    }
+    .purchase-window {
+        max-width: 600px;
+    }
+}
+@media only screen and (max-width: 740px) {
+    .purchase-window {
+        margin: 0;
+        border-radius: 0;
+        max-width: none;
+    }
+    main {
+        padding-top: 50px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    input {
+        width: 100%;
+        font-size: 15px;
+    }
+    main {
+        border-width: 0;
+    }
+    .wallet {
+        flex-direction: column;
+        align-items: center;
+    }
+    .submit {
+        padding: 10px 20px;
     }
 }

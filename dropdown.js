@@ -11,7 +11,8 @@ callBitcoinAvgAPI(
 
 const dropdowns = [];
 class Dropdown {
-    constructor(select, options, defaultCode) {
+    constructor(select, options, defaultCode, type) {
+        this.type = type;
         this.select = select;
         this.codeContainer = this.select.getElementsByClassName('select-value')[0];
         this.options = options;
@@ -27,8 +28,12 @@ class Dropdown {
         this.menu.addEventListener('click', (e) => {
             if (e.target.classList.contains('custom-option')) {
                 this.selectCode(e.target.getAttribute('data-code'));
-                setParams();
-                updateChart();
+                if (this.type === 'chart') {
+                    setParams();
+                    updateChart();
+                } else if (this.type === 'exchange') {
+                    updatePrices(e);
+                }
             }
         });
         dropdowns.push(this);
@@ -93,27 +98,32 @@ function updateOptions() {
 const chartBase = new Dropdown(
     document.querySelector('.chart-base .custom-select'),
     validCrypto,
-    'BTC'
+    'BTC',
+    'chart'
 );
 const chartQuote = new Dropdown(
     document.querySelector('.chart-quote .custom-select'),
     validFiat,
-    'USD'
+    'USD',
+    'chart'
 );
 const chartPeriod = new Dropdown(
     document.querySelector('.chart-period .custom-select'),
     ['Daily', 'Monthly', 'All Time'],
-    'Daily'
+    'Daily',
+    'chart'
 )
 const exchangeBase = new Dropdown(
     document.querySelector('.exchange-base .custom-select'),
     validCrypto,
-    'BTC'
+    'BTC',
+    'exchange'
 );
 const exchangeQuote = new Dropdown(
     document.querySelector('.exchange-quote .custom-select'),
     validFiat.concat(validCrypto),
-    'USD'
+    'USD',
+    'exchange'
 );
 console.log(dropdowns);
 
