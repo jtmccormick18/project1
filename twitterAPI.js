@@ -12,10 +12,9 @@ let encodedBase = btoa(bearerCredens);
 // Accept-Encoding: gzip
 
 
-// console.log(encodedBase);
 const twitterAuth = "https://api.twitter.com/oauth2/token";
 const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-const twitterTweets = "https://api.twitter.com/1.1/search/tweets.json?q=%23crypto+%23bitcoin"
+const twitterTweets = "https://api.twitter.com/1.1/search/tweets.json?q=%23crypto"
 $.ajax({
     url: corsAnywhere + twitterAuth,
     method: 'POST',
@@ -34,7 +33,6 @@ $.ajax({
             "Authorization": `Bearer ${bearerToken}`,
         }
     }).then(function (tweets) {
-        console.log(tweets);
         let renderTweets = tweets.statuses;
         $('#tweets').html('<h1 class="tweetHead"> Social Trends </h1>')
         for (let i = 0; i < tweets.statuses.length; i++) {
