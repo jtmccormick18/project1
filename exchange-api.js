@@ -1,27 +1,6 @@
-function handleError(jqXHR) {
-  console.log(JSON.parse(jqXHR.responseText));
-}
-
-function cbCurrency(data) {
-  $.ajax({
-    type: "GET",
-    url: "https://api.nexchange.io/en/api/v1/pair/"
-  }).then(function(response) {
-    for (let i = 0; i < response.length; i++) {
-      console.log(response[i].name);
-      if (response[i].base != response[i].quote) {
-        console.log(true);
-      } else {
-        console.log(false);
-      }
-    }
-  });
-}
-
-function cbPairs(data) {
-  console.log(data);
-}
 let paymentURL;
+let errorDiv = $(".error");
+
 const createOrder = function(e) {
   e.preventDefault();
 
@@ -42,10 +21,6 @@ const createOrder = function(e) {
   coinName = baseCode + quoteCode;
 
   const quoteAmount = $(".quote-input").val();
-
-  console.log(coinName);
-  console.log(baseCode);
-  console.log(quoteCode);
 
   const payload = {
     amount_quote: quoteAmount,
@@ -71,11 +46,19 @@ const createOrder = function(e) {
       currency_code: baseCode
     }
   };
-  $;
-  console.log(payload);
 
   $.ajax({
-    error: handleError,
+    error: function(jqXHR) {
+      let error = JSON.parse(jqXHR.responseText);
+      if (error.non_field_errors) {
+        errorDiv.text("*" + error.non_field_errors[0]);
+      }
+      paymentURL = undefined;
+      console.log(error);
+    },
+    success: function() {
+      errorDiv.text("");
+    },
     url: orderURL,
     method: "POST",
     data: JSON.stringify(payload),
@@ -89,26 +72,25 @@ const createOrder = function(e) {
   });
 };
 
-function convertPrice(e) {
-    let target = $(e.target);
-    if (target.hasClass('custom-option')) {
-      target = target.parent().parent().parent();
-    }
-    console.log(target);
-    const baseInput = $('.base-input');
-    const quoteInput = $('.quote-input');
+function callNExchange(e) {
+  let target = $(e.target);
+  if (target.hasClass("wallet-address")) {
+    createOrder(e);
+  } else {
+    const baseInput = $(".base-input");
+    const quoteInput = $(".quote-input");
 
-    const quoteCode = $('.exchange-quote .select-value').text();
-    const baseCode = $('.exchange-base .select-value').text();
+    const quoteCode = $(".exchange-quote .select-value").text();
+    const baseCode = $(".exchange-base .select-value").text();
     const pair = baseCode + quoteCode;
 
     let quoteAmount = quoteInput.val();
     let baseAmount = baseInput.val();
     let queryURL;
 
-    let inputtingBase = target.hasClass('base-input');
-    let selectingQuote = target.hasClass('exchange-quote');
-    if (inputtingBase || selectingQuote) {
+    console.log(target);
+    let inputtingBase = target.hasClass("base-input");
+    if (inputtingBase) {
       baseAmount = baseInput.val();
       queryURL = `https://api.nexchange.io/en/api/v1/get_price/${pair}/?amount_base=${baseAmount}`;
     } else {
@@ -117,28 +99,30 @@ function convertPrice(e) {
     }
 
     $.ajax({
-        url: queryURL,
-        method: 'GET',
-        error: handleError,
-    }).then(function(response) {
-        if (inputtingBase || selectingQuote) {
+      url: queryURL,
+      method: "GET",
+      error: function(jqXHR) {
+        let error = JSON.parse(jqXHR.responseText);
+        errorDiv.text("*" + error.detail);
+        paymentURL = undefined;
+      },
+      success: function(response) {
+        errorDiv.text("");
+        if (inputtingBase) {
           quoteInput.val(response.amount_quote);
         } else {
           baseInput.val(response.amount_base);
         }
-    })
-}
-function updatePrices(e) {
-  const target = $(e.target);
-  if (!target.hasClass('.wallet-address')) {
-    convertPrice(e);
+        createOrder(e);
+      }
+    });
   }
-  createOrder(e);
 }
-$('.quote-input, .base-input, .wallet-address').on('input', function(e) {
-  updatePrices(e);
+$(".quote-input, .base-input, .wallet-address").on("input", function(e) {
+  // updatePrices(e);
+  callNExchange(e);
 });
 $(".submit").on("click", function(e) {
   e.preventDefault();
-  if (paymentURL) window.open(paymentURL, '_blank');
+  if (paymentURL) window.open(paymentURL, "_blank");
 });
