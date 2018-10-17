@@ -29,7 +29,6 @@ main {
     width: 100%;
     max-width: 1200px;
     border: solid rgba(151, 0, 226, 0.2);
-    /* border-color: #f6f6f6; */
     border-width: 0 40px;
 }
 
@@ -39,7 +38,6 @@ main {
 
     box-sizing: border-box;
     background-color: #303030;
-    border-width: 8px 8px 0;
     border-radius: 10px 10px 0 0;
     width: 100%;
     max-width: 800px;
@@ -260,10 +258,18 @@ footer {
     
 }
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 1150px) {
     .chart {
         border-radius: 0;
         border-width: 8px 0;
+        max-width: none;
+    }
+}
+@media only screen and (max-width: 970px) {
+    .chart-dropdowns {
+        border-radius: 0;
+        border-width: 8px 0;
+        max-width: none;
     }
 }
 @media only screen and (max-width: 800px) {
@@ -273,12 +279,15 @@ footer {
     .exchange {
         flex-direction: column;
     }
+    .purchase-window {
+        max-width: 600px;
+    }
 }
-@media only screen and (max-width: 700px) {
-    .chart-dropdowns, .chart, .purchase-window {
+@media only screen and (max-width: 740px) {
+    .purchase-window {
         margin: 0;
         border-radius: 0;
-        border-width: 8px 0 0;
+        max-width: none;
     }
     main {
         padding-top: 50px;
