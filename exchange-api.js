@@ -92,23 +92,30 @@ const createOrder = function(e) {
 };
 
 function convertPrice(e) {
-    const inputBox = $(e.target);
+    let target = $(e.target);
+    if (target.hasClass('custom-option')) {
+      target = target.parent().parent().parent();
+    }
+    console.log(target);
+    const baseInput = $('.base-input');
+    const quoteInput = $('.quote-input');
 
     const quoteCode = $('.exchange-quote .select-value').text();
     const baseCode = $('.exchange-base .select-value').text();
     const pair = baseCode + quoteCode;
 
-    let quoteAmount;
-    let baseAmount;
+    let quoteAmount = quoteInput.val();
+    let baseAmount = baseInput.val();
     let queryURL;
 
-    let inputtingQuote = inputBox.hasClass('quote-input');
-    if (inputtingQuote) {
-        quoteAmount = inputBox.val();
-        queryURL = `https://api.nexchange.io/en/api/v1/get_price/${pair}/?amount_quote=${quoteAmount}`;
+    let inputtingBase = target.hasClass('base-input');
+    let selectingQuote = target.hasClass('exchange-quote');
+    if (inputtingBase || selectingQuote) {
+      baseAmount = baseInput.val();
+      queryURL = `https://api.nexchange.io/en/api/v1/get_price/${pair}/?amount_base=${baseAmount}`;
     } else {
-        baseAmount = e.target.value;
-        queryURL = `https://api.nexchange.io/en/api/v1/get_price/${pair}/?amount_base=${baseAmount}`;
+      quoteAmount = quoteInput.val();
+      queryURL = `https://api.nexchange.io/en/api/v1/get_price/${pair}/?amount_quote=${quoteAmount}`;
     }
 
     $.ajax({
@@ -116,19 +123,25 @@ function convertPrice(e) {
         method: 'GET',
         error: handleError,
     }).then(function(response) {
-        if (inputtingQuote) {
-            $('.base-input').val(response.amount_base);
+        if (inputtingBase || selectingQuote) {
+          quoteInput.val(response.amount_quote);
         } else {
-            $('.quote-input').val(response.amount_quote);
+          baseInput.val(response.amount_base);
         }
     })
 }
-$('.quote-input, .base-input, .wallet-address').on('input', function(e) {
-  convertPrice(e);
+function updatePrices(e) {
+  const target = $(e.target);
+  if (!target.hasClass('.wallet-address')) {
+    convertPrice(e);
+  }
   createOrder(e);
+}
+$('.quote-input, .base-input, .wallet-address').on('input', function(e) {
+  updatePrices(e);
 });
 $(".submit").on("click", function(e) {
   e.preventDefault();
-  window.open(paymentURL, '_blank');
+  if (paymentURL) window.open(paymentURL, '_blank');
 });
 console.log(createOrder);
