@@ -3,8 +3,6 @@ function handleError(jqXHR) {
 }
 
 function cbCurrency(data) {
-  console.log(data);
-
   $.ajax({
     type: "GET",
     url: "https://api.nexchange.io/en/api/v1/pair/"
@@ -131,4 +129,3 @@ $(".submit").on("click", function(e) {
   e.preventDefault();
   window.open(paymentURL, '_blank');
 });
-console.log(createOrder);

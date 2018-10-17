@@ -12,21 +12,14 @@ function setup() {
     );
     background(0);
 
-    var x = 0;
-    for (var i = 0; i <= width / symbolSize; i++) {
-        var stream = new Stream();
-        stream.generateSymbols(x, random(-2000, 0));
-        streams.push(stream);
-        x += symbolSize
-    }
-    prevMax = i;
+    generateStreams();
 
     textFont('Consolas');
     textSize(symbolSize);
 }
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-   
+    generateStreams();
 }
 
 function draw() {
@@ -36,10 +29,24 @@ function draw() {
     });
 }
 
+function generateStreams () {
+    streams = [];
+    var x = 0;
+    for (var i = 0; i <= width / symbolSize; i++) {
+        var stream = new Stream();
+        stream.generateSymbols(x, random(-2000, 0));
+        streams.push(stream);
+        x += symbolSize
+    }
+    prevMax = i;
+}
+
 function Symbol(x, y, speed, first, opacity) {
     this.x = x;
     this.y = y;
-    this.value;
+
+    // Temp solution until cause of this.value being undefined upon resize being determined
+    this.value = this.value || 0;
 
     this.speed = speed;
     this.first = first;
@@ -63,7 +70,7 @@ function Symbol(x, y, speed, first, opacity) {
 function Stream() {
     this.symbols = [];
     this.totalSymbols = round(random(5, 35));
-    this.speed = random(2, 8);
+    this.speed = random(2, 5);
 
     this.generateSymbols = function (x, y) {
         var opacity = 255;
