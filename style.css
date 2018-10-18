@@ -175,6 +175,7 @@ input:focus {
 }
 input {
     -webkit-appearance: none;
+    border-radius: 0;
     font-family: 'Inconsolata', monospace;
 }
 input[type=number]::-webkit-inner-spin-button, 
