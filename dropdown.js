@@ -1,13 +1,5 @@
 let validFiat = ['USD', 'EUR', 'GBP', 'JPY'];
 let validCrypto = ['BTC', 'ETH', 'LTC', 'BCH'];
-'BIX', 'KCS', 'KNC', 'HT', 'BNT', 'MG', 'COB', 'BNB', 'EOS', 'EOS', 'XVG', 'BDG'
-
-callBitcoinAvgAPI(
-    `https://apiv2.bitcoinaverage.com/symbols/indices/history/local`,
-    function(data) {
-        console.log(data);
-    }
-);
 
 const dropdowns = [];
 class Dropdown {
@@ -32,7 +24,7 @@ class Dropdown {
                     setParams();
                     updateChart();
                 } else if (this.type === 'exchange') {
-                    updatePrices(e);
+                    callNExchange(e);
                 }
             }
         });
@@ -125,7 +117,6 @@ const exchangeQuote = new Dropdown(
     'USD',
     'exchange'
 );
-console.log(dropdowns);
 
 document.addEventListener('click', function(e) {
     e.preventDefault();
